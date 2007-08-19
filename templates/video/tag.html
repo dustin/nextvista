@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1>Display Videos with Tag {{ tag }}</h1>
+
+<ul>
+	{% for video in videos %}
+		<li><a href="/video/{{ video.slug }}/">{{ video.title }}</a></li>
+	{% endfor %}
+</ul>
+{% endblock %}
