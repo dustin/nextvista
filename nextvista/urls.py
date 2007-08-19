@@ -1,8 +1,12 @@
 from django.conf.urls.defaults import *
-from nextvista.app.video.models import Video
+from nextvista.app.video.models import Video, Tag
 
 v_info_dict = {
     'queryset': Video.objects.all(),
+}
+
+t_info_dict = {
+    'queryset': Tag.objects.all(),
 }
 
 urlpatterns = patterns('',
@@ -16,6 +20,8 @@ urlpatterns = patterns('',
             template_name='video/display.html')),
 
     (r'^user/(?P<username>[-\w]+)/$', 'nextvista.app.video.views.show_user'),
+
+    (r'^tag/$', 'django.views.generic.list_detail.object_list', t_info_dict),
     (r'^tag/(?P<tag>[-\w]+)/$', 'nextvista.app.video.views.show_tag'),
 
     # Uncomment this for admin:
