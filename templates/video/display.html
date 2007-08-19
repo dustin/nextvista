@@ -4,19 +4,16 @@
 
 {% block main %}
 <h3>{{ object.title }}</h3>
+	<div class="narrowcolumn">
 
 <ul class="postinfo">
-<li>Author: {{ object.submitter.user.first_name }}
-	{{ object.submitter.user.last_name }}</li>
-<li>Date Added: {{ object.submit_date|date:"F Y" }}</li>
+<li>Author: <a href="/user/{{ object.submitter.user.username }}/">{{ object.submitter.user.first_name }} {{ object.submitter.user.last_name }}</a></li>
 <li>Tags: {{ object.tags.all|join:", " }}</li>
 </ul>
 
 <p>
-Descr:
-</p>
-
-<pre>
 {{ object.descr }}
-</pre>
+</p>
+	</div>
+
 {% endblock %}

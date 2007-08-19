@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h1>Display Videos with Tag {{ tag }}</h1>
+<h3>Tag Archive For "{{ tag }}"</h3>
+	<div class="narrowcolumn">
 
-<ul>
+		<ul class="collectionlist">
 	{% for video in videos %}
 		<li><a href="/video/{{ video.slug }}/">{{ video.title }}</a></li>
 	{% endfor %}
 </ul>
+	</div>
+
 {% endblock %}
