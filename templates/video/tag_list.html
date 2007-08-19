@@ -3,7 +3,7 @@
 {% block main %}
 <ul>
 {% for tag in object_list %}
-	<li><a href="{{ tag.name }}/">{{ tag.name }}</a></li>
+	<li><a href="{{ tag.name }}/">{{ tag.display }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

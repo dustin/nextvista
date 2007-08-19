@@ -31,6 +31,14 @@ class Language(models.Model):
 class Tag(models.Model):
 
     name = models.CharField(maxlength=32)
+    display_name = models.CharField(maxlength=64)
+
+    @property
+    def display(self):
+        rv=self.display_name
+        if not rv:
+            rv=self.name
+        return rv
 
     def __str__(self):
         return self.name
