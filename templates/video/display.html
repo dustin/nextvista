@@ -6,7 +6,8 @@
 <h3>{{ object.title }}</h3>
 
 <ul class="postinfo">
-<li>Author: {{ object.submitter }}</li>
+<li>Author: {{ object.submitter.user.first_name }}
+	{{ object.submitter.user.last_name }}</li>
 <li>Date Added: {{ object.submit_date|date:"F Y" }}</li>
 <li>Tags: {{ object.tags.all|join:", " }}</li>
 </ul>
