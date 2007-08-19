@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Video - {{ video.title }}{% endblock %}
+{% block pagetitle %}{{ video.title }}: Next Vista For Learning{% endblock %}
 
 {% block main %}
-<h3>{{ video.title }}</h3>
 	<div class="narrowcolumn">
+<h3>{{ video.title }}</h3>
 
 {% load custom_filters %}
 <ul class="postinfo">
@@ -14,10 +14,9 @@
 <li>Rating:  {{ rating }}</li>
 <li>Number of Votes:  {{ num_ratings }}</li>
 </ul>
-
-<p>
-{{ video.long_descr }}
-</p>
+{% if video.long_descr %}
+<p>{{ video.long_descr }}</p>
+{% endif %}
 	</div>
 
 {% endblock %}
