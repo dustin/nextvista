@@ -19,16 +19,18 @@ def show_tag(request, tag):
     for v in vres:
         has_all_tags = True
         vtags = v.tags.all()
-        for t in vtags:
-            related[t.name] = t
         for t in tags:
             if t not in vtags:
                 has_all_tags = False
         if has_all_tags:
             rv[v.id] = v
-        for t in tags:
-            if t.name in related:
-                del related[t.name]
+    # Set up the related tags.
+    for v in rv.values():
+        for t in v.tags.all():
+            related[t.name] = t
+    for t in tags:
+        if t.name in related:
+            del related[t.name]
     return render_to_response('video/tag.html',
         {'tag': tag,
         'tags': tags,
