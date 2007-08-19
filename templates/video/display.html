@@ -10,7 +10,7 @@
 <ul class="postinfo">
 <li>Author: <a href="/user/{{ video.submitter.user.username }}/">{{ video.submitter.user.first_name }} {{ video.submitter.user.last_name }}</a></li>
 <li>Language: {{ video.language }}</li>
-<li>Tags: {{ video.tags.all|listify_tag }}</li>
+<li>Tags: {{ video.tags.all|listify_tag:", " }}</li>
 <li>Rating:  {{ rating }}</li>
 <li>Number of Votes:  {{ num_ratings }}</li>
 </ul>
