@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     (r'^user/(?P<username>[-\w]+)/$', 'nextvista.app.video.views.show_user'),
 
     (r'^tag/$', 'django.views.generic.list_detail.object_list', t_info_dict),
-    (r'^tag/(?P<tag>[-\w]+)/$', 'nextvista.app.video.views.show_tag'),
+    (r'^tag/(?P<tag>[-\+\w]+)/$', 'nextvista.app.video.views.show_tag'),
 
     # Uncomment this for admin:
     (r'^admin/', include('django.contrib.admin.urls')),

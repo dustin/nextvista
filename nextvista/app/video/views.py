@@ -10,6 +10,17 @@ def show_user(request, username):
     return render_to_response('user.html', {'user': up, 'videos': videos})
 
 def show_tag(request, tag):
-    tag=Tag.objects.get(name=tag)
-    videos = Video.objects.filter(tags=tag)
-    return render_to_response('video/tag.html', {'tag': tag, 'videos': videos})
+    tags=Tag.objects.filter(name__in=tag.split('+'))
+    vres = Video.objects.filter(tags__in=tags)
+    videos=[]
+    rv={}
+    # Lame.  I need to figureo out how to get a proper intersection.
+    for v in vres:
+        has_all_tags = True
+        for t in tags:
+            if t not in v.tags.all():
+                has_all_tags = False
+        if has_all_tags:
+            rv[v.id] = v
+    return render_to_response('video/tag.html',
+        {'tag': tag, 'videos': sorted(rv.values())})
