@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Video - {{ object.title }}{% endblock %}
+
+{% block main %}
+<p>
+Title:  {{ object.title }}
+</p>
+
+<p>
+Descr:
+</p>
+
+<pre>
+{{ object.descr }}
+</pre>
+{% endblock %}
