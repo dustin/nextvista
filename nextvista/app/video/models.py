@@ -19,6 +19,8 @@ class Language(models.Model):
 
     code = models.CharField(maxlength=2)
 
+    class Admin:
+        pass
 
 class Tag(models.Model):
 
