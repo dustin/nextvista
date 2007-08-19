@@ -75,4 +75,5 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.flatpages',
     'django.contrib.redirects',
+    'nextvista.app.video',
 )
