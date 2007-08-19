@@ -22,8 +22,7 @@ def show_tag(request, tag):
     tags=Tag.objects.filter(name__in=tag.split('+'))
     vres = Video.objects.filter(tags__in=tags)
     related = {}
-    videos=[]
-    rv={}
+    videos={}
     # Lame.  I need to figureo out how to get a proper intersection.
     for v in vres:
         has_all_tags = True
@@ -32,16 +31,17 @@ def show_tag(request, tag):
             if t not in vtags:
                 has_all_tags = False
         if has_all_tags:
-            rv[v.id] = v
+            videos[v.id] = v
     # Set up the related tags.
-    for v in rv.values():
+    for v in videos.values():
         for t in v.tags.all():
             related[t.name] = t
     for t in tags:
         if t.name in related:
             del related[t.name]
+
     return render_to_response('video/tag.html',
         {'tag': tag,
         'tags': tags,
-        'related': sorted(related.values()),
-        'videos': sorted(rv.values())})
+        'related': sorted(related.values(), key=lambda x: x.name),
+        'videos': sorted(videos.values(), key=lambda x: x.title)})
