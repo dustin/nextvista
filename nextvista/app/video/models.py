@@ -50,6 +50,7 @@ class Video(models.Model):
     title = models.CharField(maxlength=128)
     slug = models.SlugField(prepopulate_from=['title'])
     descr = models.TextField()
+    long_descr = models.TextField()
     tags = models.ManyToManyField(Tag)
 
     def __str__(self):
