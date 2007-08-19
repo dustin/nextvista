@@ -40,7 +40,7 @@ class Tag(models.Model):
 
 class Video(models.Model):
 
-    submitter = models.ForeignKey(User)
+    submitter = models.ForeignKey(UserProfile)
     submit_date = models.DateTimeField('date posted')
     language = models.ForeignKey(Language)
     duration = models.IntegerField()
@@ -54,3 +54,29 @@ class Video(models.Model):
 
     class Admin:
         pass
+
+class VideoFormat(models.Model):
+
+    name = models.CharField(maxlength=64)
+    mime_type = models.CharField(maxlength=32)
+
+    def __str__(self):
+        return self.name
+
+    class Admin:
+        pass
+
+class VideoVariant(models.Model):
+
+    video = models.ForeignKey(Video)
+    format = models.ForeignKey(VideoFormat)
+    width = models.IntegerField()
+    height = models.IntegerField()
+    size = models.IntegerField()
+
+    def __str__(self):
+        return format.name + " variant of " + video.name
+
+    class Admin:
+        pass
+
