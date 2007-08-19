@@ -11,4 +11,12 @@
 </ul>
 	</div>
 
+<h2>Related Tags</h2>
+
+<ul>
+	{% for t in related %}
+		<li><a href="/tag/{{ tag }}+{{ t }}/">{{ t.display }}</a></li>
+	{% endfor %}
+</ul>
+
 {% endblock %}
