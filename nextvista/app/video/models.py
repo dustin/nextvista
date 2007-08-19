@@ -12,6 +12,9 @@ class UserProfile(models.Model):
     descr = models.TextField()
     referral = models.TextField()
 
+    def __str__(self):
+        return str(self.user)
+
     class Admin:
         pass
 
