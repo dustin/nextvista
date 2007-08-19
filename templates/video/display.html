@@ -5,12 +5,10 @@
 {% block main %}
 <h3>{{ object.title }}</h3>
 	<div class="narrowcolumn">
-
+{% load custom_filters %}
 <ul class="postinfo">
 <li>Author: <a href="/user/{{ object.submitter.user.username }}/">{{ object.submitter.user.first_name }} {{ object.submitter.user.last_name }}</a></li>
-<li>Tags: {% for tag in object.tags.all %}
-<a href="/tag/{{ tag.name }}/">{{ tag.display }}</a>
-{% endfor %}</li>
+<li>Tags: {{ object.tags.all|listify_tag }}</li>
 </ul>
 
 <p>
