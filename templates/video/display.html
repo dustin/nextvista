@@ -8,7 +8,9 @@
 
 <ul class="postinfo">
 <li>Author: <a href="/user/{{ object.submitter.user.username }}/">{{ object.submitter.user.first_name }} {{ object.submitter.user.last_name }}</a></li>
-<li>Tags: {{ object.tags.all|join:", " }}</li>
+<li>Tags: {% for tag in object.tags.all %}
+<a href="/tag/{{ tag.name }}/">{{ tag.display }}</a>
+{% endfor %}</li>
 </ul>
 
 <p>
