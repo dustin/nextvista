@@ -15,6 +15,8 @@ urlpatterns = patterns('',
             dict(v_info_dict, slug_field='slug',
             template_name='video/display.html')),
 
+    (r'^user/(?P<username>[-\w]+)/$', 'nextvista.app.video.views.show_user'),
+
     # Uncomment this for admin:
     (r'^admin/', include('django.contrib.admin.urls')),
 )

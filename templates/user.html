@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}All about {{ user.user.username }}{% endblock %}
+
+{% block main %}
+<p>
+	All about user {{ user.user.first_name }} {{ user.user.last_name }}...
+</p>
+
+<h1>Videos by this User</h1>
+<ul>
+	{% for video in videos %}
+		<li><a href="/video/{{video.slug}}/">{{video.title}}</a></li>
+	{% endfor %}
+</ul>
+{% endblock %}
