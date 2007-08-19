@@ -14,10 +14,7 @@ urlpatterns = patterns('',
     # (r'^nextvista/', include('nextvista.apps.foo.urls.foo')),
 
     (r'^video/$', 'django.views.generic.list_detail.object_list', v_info_dict),
-    (r'^video/(?P<slug>[-\w]+)/$',
-        'django.views.generic.list_detail.object_detail',
-            dict(v_info_dict, slug_field='slug',
-            template_name='video/display.html')),
+    (r'^video/(?P<slug>[-\w]+)/$', 'nextvista.app.video.views.show_video'),
 
     (r'^user/(?P<username>[-\w]+)/$', 'nextvista.app.video.views.show_user'),
 

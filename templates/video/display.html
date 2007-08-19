@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}Video - {{ object.title }}{% endblock %}
+{% block title %}Video - {{ video.title }}{% endblock %}
 
 {% block main %}
-<h3>{{ object.title }}</h3>
+<h3>{{ video.title }}</h3>
 	<div class="narrowcolumn">
 
 <ul class="postinfo">
-<li>Author: <a href="/user/{{ object.submitter.user.username }}/">{{ object.submitter.user.first_name }} {{ object.submitter.user.last_name }}</a></li>
-<li>Tags: {% for tag in object.tags.all %}
+<li>Author: <a href="/user/{{ video.submitter.user.username }}/">{{ video.submitter.user.first_name }} {{ video.submitter.user.last_name }}</a></li>
+<li>Tags: {% for tag in video.tags.all %}
 <a href="/tag/{{ tag.name }}/">{{ tag.display }}</a>
 {% endfor %}</li>
+<li>Rating:  {{ rating }}</li>
+<li>Number of Votes:  {{ num_ratings }}</li>
 </ul>
 
 <p>
-{{ object.descr }}
+{{ video.descr }}
 </p>
 	</div>
 
