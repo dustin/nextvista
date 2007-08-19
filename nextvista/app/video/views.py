@@ -23,4 +23,4 @@ def show_tag(request, tag):
         if has_all_tags:
             rv[v.id] = v
     return render_to_response('video/tag.html',
-        {'tag': tag, 'videos': sorted(rv.values())})
+        {'tag': tag, 'tags', tags, 'videos': sorted(rv.values())})
