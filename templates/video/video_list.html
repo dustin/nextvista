@@ -5,7 +5,7 @@
 {% block main %}
 <ul>
 	{% for obj in object_list %}
-		<li><a href="{{ obj.slug }}/">{{ obj.title }}</a></li>
+		<li class="{{obj.tags.all|join:" "}} "><a href="{{ obj.slug }}/">{{ obj.title }}</a> - {{ obj.submit_date|date:"F Y" }}</li>
 	{% endfor %}
 </ul>
 {% endblock %}

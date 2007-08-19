@@ -3,9 +3,13 @@
 {% block title %}Video - {{ object.title }}{% endblock %}
 
 {% block main %}
-<p>
-Title:  {{ object.title }}
-</p>
+<h3>{{ object.title }}</h3>
+
+<ul class="postinfo">
+<li>Author: {{ object.submitter }}</li>
+<li>Date Added: {{ object.submit_date|date:"F Y" }}</li>
+<li>Tags: {{ object.tags.all|join:", " }}</li>
+</ul>
 
 <p>
 Descr:
