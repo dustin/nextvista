@@ -8,6 +8,7 @@
 
 <ul class="postinfo">
 <li>Author: <a href="/user/{{ video.submitter.user.username }}/">{{ video.submitter.user.first_name }} {{ video.submitter.user.last_name }}</a></li>
+<li>Language: {{ video.language }}</li>
 <li>Tags: {% for tag in video.tags.all %}
 <a href="/tag/{{ tag.name }}/">{{ tag.display }}</a>
 {% endfor %}</li>
@@ -16,7 +17,7 @@
 </ul>
 
 <p>
-{{ video.descr }}
+{{ video.long_descr }}
 </p>
 	</div>
 
