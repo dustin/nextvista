@@ -66,6 +66,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     '/Users/tsguitar/nextvista/templates',
     '/Users/dustin/prog/nextvista/templates',
+    '/Users/verbal/nextvista/templates',
 )
 
 INSTALLED_APPS = (
