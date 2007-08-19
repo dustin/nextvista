@@ -1,7 +1,16 @@
 from django.shortcuts import render_to_response
 
 from django.contrib.auth.models import User
-from nextvista.app.video.models import UserProfile, Video, Tag
+from nextvista.app.video.models import UserProfile, Video, Tag, Rating
+
+def show_video(request, slug):
+    video=Video.objects.get(slug=slug)
+    ratings = Rating.objects.filter(video=video)
+    avg_rating = 0
+    if ratings:
+        avg_rating = sum([r.value for r in ratings]) / len(ratings)
+    return render_to_response('video/display.html',
+        {'video': video, 'rating': avg_rating, 'num_ratings': len(ratings)})
 
 def show_user(request, username):
     user=User.objects.get(username=username)

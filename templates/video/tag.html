@@ -10,12 +10,19 @@
 	{% endfor %}
 </ul>
 	</div>
+
+<div id="sidebar">
+{% if related %}
 <h2>Related Tags</h2>
 
 <ul>
+{% endif %}
 	{% for t in related %}
 		<li><a href="/tag/{{ tag }}+{{ t }}/">{{ t.display }}</a></li>
 	{% endfor %}
-</ul>
 
+{% if related %}
+</ul>
+{% endif %}
+</div>
 {% endblock %}

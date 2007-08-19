@@ -3,9 +3,9 @@
 {% block title %}Video List{% endblock %}
 
 {% block main %}
-<ul>
+		<ul class="collectionlist">
 	{% for obj in object_list %}
-		<li class="{{obj.tags.all|join:" "}} "><a href="{{ obj.slug }}/">{{ obj.title }}</a> - {{ obj.submit_date|date:"F Y" }}</li>
+		<li class="{{obj.tags.all|join:" "}} listitem"><a href="{{ obj.slug }}/">{{ obj.title }}</a> - {{ obj.submit_date|date:"F Y" }}<br />{{ obj.descr }}</li>
 	{% endfor %}
 </ul>
 {% endblock %}

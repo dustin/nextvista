@@ -92,3 +92,15 @@ class VideoVariant(models.Model):
     class Admin:
         pass
 
+class Rating(models.Model):
+
+    user = models.ForeignKey(UserProfile)
+    video = models.ForeignKey(Video)
+    value = models.IntegerField()
+
+    def __str__(self):
+        return self.user.user.first_name + " " + self.user.user.last_name \
+            + " rated " + self.video.title + " as " + str(self.value)
+
+    class Admin:
+        pass
