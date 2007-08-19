@@ -19,6 +19,9 @@ class Language(models.Model):
 
     code = models.CharField(maxlength=2)
 
+    def __str__(self):
+        return self.code
+
     class Admin:
         pass
 
@@ -45,6 +48,9 @@ class Video(models.Model):
     slug = models.SlugField(prepopulate_from=['title'])
     descr = models.TextField()
     tags = models.ManyToManyField(Tag)
+
+    def __str__(self):
+        return self.title
 
     class Admin:
         pass
