@@ -1,5 +1,7 @@
 # Django settings for nextvista project.
 
+import os
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -64,9 +66,8 @@ ROOT_URLCONF = 'nextvista.urls'
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates".
     # Always use forward slashes, even on Windows.
-    '/Users/tsguitar/nextvista/templates',
-    '/Users/dustin/prog/nextvista/templates',
-    '/Users/verbal/nextvista/templates',
+    os.path.expanduser("~/nextvista/templates"),
+    os.path.expanduser("~/prog/nextvista/templates"),
 )
 
 INSTALLED_APPS = (
