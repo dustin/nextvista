@@ -1,0 +1,23 @@
+fieldset legend {
+	border: 1px solid black;
+	font-size: larger;
+}
+
+fieldset label {
+	float: left;
+	width: 10em;
+}
+
+fieldset textarea {
+	width: 40em;
+	height: 6em;
+}
+
+fieldset + fieldset {
+	margin-top: 1em;
+}
+
+.error {
+	font-weight: bolder;
+	color: red;
+}

@@ -4,33 +4,6 @@
 
 {% block main %}
 
-<style type="text/css">
-/* This belongs in the global css, or at least a form specific one */
-fieldset legend {
-	border: 1px solid black;
-	font-size: larger;
-}
-
-fieldset label {
-	float: left;
-	width: 10em;
-}
-
-fieldset textarea {
-	width: 40em;
-	height: 6em;
-}
-
-fieldset + fieldset {
-	margin-top: 1em;
-}
-
-.error {
-	font-weight: bolder;
-	color: red;
-}
-</style>
-
 {% if form.has_errors %}
 <h2 class="error">Please correct the following error{{ errors|pluralize }}:</h2>
 <ul class="error">
