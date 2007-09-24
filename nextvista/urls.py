@@ -17,6 +17,9 @@ urlpatterns = patterns('',
     (r'^video/(?P<slug>[-\w]+)/$', 'nextvista.app.video.views.show_video'),
 
     (r'^user/(?P<username>[-\w]+)/$', 'nextvista.app.video.views.show_user'),
+    (r'^signup/$', 'nextvista.app.video.views.register'),
+    (r'^login/$', 'django.contrib.auth.views.login'),
+    (r'^logout/$', 'django.contrib.auth.views.logout'),
 
     (r'^tag/$', 'django.views.generic.list_detail.object_list', t_info_dict),
     (r'^tag/(?P<tag>[-\+\w]+)/$', 'nextvista.app.video.views.show_tag'),

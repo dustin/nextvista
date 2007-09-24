@@ -28,9 +28,12 @@
 	<li id="service"><a href="http://www.nextvista.org/collection-list-seeing-service/">seeing service</a></li>
 	<li id="about"><a href="http://www.nextvista.org/about">about</a></li>
 	<li id="contact"><a href="http://www.nextvista.org/contact">contact</a></li>
-
+{% if user.is_authenticated %}
+	<li id="userinfo"><a href="/logout/">Logout {{ user.username }}</a></li>
+{% else %}
+	<li id="login"><a href="/login/">Login</a></li>
+{% endif %}
 </ul>
-
 
 {% block nav %}{% endblock %}
 {% block main %}{% endblock %}

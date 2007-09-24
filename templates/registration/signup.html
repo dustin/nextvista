@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}Create an Account{% endblock %}
+
+{% block main %}
+
+<style type="text/css">
+/* This belongs in the global css, or at least a form specific one */
+fieldset legend {
+	border: 1px solid black;
+	font-size: larger;
+}
+
+fieldset label {
+	float: left;
+	width: 10em;
+}
+
+fieldset textarea {
+	width: 40em;
+	height: 6em;
+}
+
+fieldset + fieldset {
+	margin-top: 1em;
+}
+
+.error {
+	font-weight: bolder;
+	color: red;
+}
+</style>
+
+{% if form.has_errors %}
+<h2 class="error">Please correct the following error{{ errors|pluralize }}:</h2>
+<ul class="error">
+	{% for e in errors.items %}
+		<li>Field "{{ e.0 }}": {{ e.1|join:", " }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+<h3>Create an Account</h3>
+
+<form method="post" action="/signup/">
+	<fieldset class="aligned" id="requestor">
+		<legend>Credentials</legend>
+
+		<div>
+			<label for="id_username">Username</label>
+			{{ form.username }}
+			{% if form.username.errors %}
+				<span class="error">
+					*** {{ form.username.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+		<div>
+			<label for="id_password">Password</label>
+			{{ form.password }}
+			{% if form.password.errors %}
+				<span class="error">
+					*** {{ form.password.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+		<div>
+			<label for="id_password2">Password (confirm)</label>
+			{{ form.password2 }}
+			{% if form.password2.errors %}
+				<span class="error">
+					*** {{ form.password2.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+	</fieldset>
+
+	<fieldset>
+		<legend>Personal Info</legend>
+
+		<div>
+			<label for="id_first_name">First name</label>
+			{{ form.first_name }}
+			{% if form.first_name.errors %}
+				<span class="error">
+					*** {{ form.first_name.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+		<div>
+			<label for="id_last_name">Last name</label>
+			{{ form.last_name }}
+			{% if form.last_name.errors %}
+				<span class="error">
+					*** {{ form.last_name.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+		<div>
+			<label for="id_email">Email address</label>
+			{{ form.email }}
+			{% if form.email.errors %}
+				<span class="error">
+					*** {{ form.email.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+		<div>
+			<label for="id_city">City</label>
+			{{ form.city }}
+			{% if form.city.errors %}
+				<span class="error">
+					*** {{ form.city.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+		<div>
+			<label for="id_state">State/Province</label>
+			{{ form.state }}
+			{% if form.state.errors %}
+				<span class="error">
+					*** {{ form.state.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+		<div>
+			<label for="id_country">Country</label>
+			{{ form.country }}
+			{% if form.country.errors %}
+				<span class="error">
+					*** {{ form.country.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+	</fieldset>
+
+	<fieldset>
+		<legend>More About You</legend>
+
+		<div>
+			<label for="id_is_teacher">Are you a teacher?</label>
+			{{ form.is_teacher }}
+			{% if form.is_teacher.errors %}
+				<span class="error">
+					*** {{ form.is_teacher.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+		<div>
+			<label for="id_descr">Tell us About Yourself</label>
+		</div>
+		<div>
+			{{ form.descr }}
+			{% if form.descr.errors %}
+				<span class="error">
+					*** {{ form.descr.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+		<div>
+			<label for="id_referral">How did you hear about us?</label>
+		</div>
+		<div>
+			{{ form.referral }}
+			{% if form.referral.errors %}
+				<span class="error">
+					*** {{ form.referral.errors|join:", " }}
+				</span>
+			{% endif %}
+		</div>
+
+	</fieldset>
+
+	<div>
+		<input type="submit" value="Create"/>
+	</div>
+</form>
+
+{% endblock %}
