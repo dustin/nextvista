@@ -12,7 +12,10 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-DATABASE_NAME = '/tmp/nextvista.db'   # Or path to database file if using sqlite3.
+if os.path.exists('/data/web/sqlite/nextvista.db'):
+    DATABASE_NAME = '/data/web/sqlite/nextvista.db'
+else:
+    DATABASE_NAME = '/tmp/nextvista.db'
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
