@@ -70,6 +70,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'nextvista.urls'
 
 TEMPLATE_DIRS = (
+    "/data/web/django/templates/nextvista",
     os.path.expanduser("~/nextvista/templates"),
     os.path.expanduser("~/prog/nextvista/templates"),
 )
