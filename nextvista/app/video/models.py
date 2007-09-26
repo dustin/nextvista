@@ -61,6 +61,9 @@ class Video(models.Model):
     long_descr = models.TextField()
     tags = models.ManyToManyField(Tag)
 
+    def get_absolute_url(self):
+        return '/video/%s/' % self.slug
+
     def __str__(self):
         return self.title
 

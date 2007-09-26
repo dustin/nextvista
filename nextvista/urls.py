@@ -24,6 +24,6 @@ urlpatterns = patterns('',
     (r'^tag/$', 'django.views.generic.list_detail.object_list', t_info_dict),
     (r'^tag/(?P<tag>[-\+\w]+)/$', 'nextvista.app.video.views.show_tag'),
 
-    # Uncomment this for admin:
     (r'^admin/', include('django.contrib.admin.urls')),
+    (r'^comments/', include('django.contrib.comments.urls.comments')),
 )

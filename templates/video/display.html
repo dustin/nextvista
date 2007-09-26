@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load comments %}
+
 {% block pagetitle %}{{ video.title }}: Next Vista For Learning{% endblock %}
 
 {% block main %}
@@ -8,15 +10,50 @@
 
 {% load custom_filters %}
 <ul class="postinfo">
-<li>Author: <a href="/user/{{ video.submitter.user.username }}/">{{ video.submitter.user.first_name }} {{ video.submitter.user.last_name }}</a></li>
-<li>Language: {{ video.language }}</li>
-<li>Tags: {{ video.tags.all|listify_tag:", " }}</li>
-<li>Rating:  {{ rating }}</li>
-<li>Number of Votes:  {{ num_ratings }}</li>
+	<li>Author: <a href="/user/{{ video.submitter.user.username }}/">{{ video.submitter.user.first_name }} {{ video.submitter.user.last_name }}</a></li>
+	<li>Language: {{ video.language }}</li>
+	<li>Tags: {{ video.tags.all|listify_tag:", " }}</li>
+	<li>Rating:  {{ rating }}</li>
+	<li>Number of Votes:  {{ num_ratings }}</li>
 </ul>
 {% if video.long_descr %}
 <p>{{ video.long_descr }}</p>
 {% endif %}
 	</div>
+
+{% get_comment_list for video.video video.id as comment_list %}
+<h2>Comments</h2>
+<div id="comments">
+
+	<!-- This is kind of lame.  h* tags seem to be used as layout elements
+	instead of having proper semantic header meaning.  Ideally, the banner is in
+	its own div with a proper id, then the meaningful sections are broken down
+	with headers.
+	
+	If we can please get the meaning back into the HTML (and the CSS not being
+	served externally), then this will be way easier to deal with.
+	-->
+
+	{% for comment in comment_list %}
+		{% if comment.is_public %}
+		<div class="comment">
+			<div class="commentheader">
+				Comment from <a href="/user/{{ comment.user.username }}/">{{ comment.user.first_name }} {{ comment.user.last_name }}</a>
+				on {{ comment.submit_date|date:"P" }}
+			</div>
+			<div class="commentbody">
+				{{ comment.comment|escape|urlizetrunc:"40"|linebreaks }}
+			</div>
+		</div>
+		{% endif %}
+	{% endfor %}
+</div>
+
+{% if user.is_authenticated %}
+	<h2>Post a Comment</h2>
+	<div id="commentform">
+		{% comment_form for video.video video.id %}
+	</div>
+{% endif %}
 
 {% endblock %}
