@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 
 from django.http import HttpResponseRedirect, HttpResponse
+from django.template import RequestContext
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -9,20 +10,24 @@ from nextvista.app.video.models import UserProfile, Video, Tag, Rating
 from nextvista.app.video import forms
 from nextvista import settings
 
+def render_ctx_to_response(request, tmpl, h):
+    return render_to_response(tmpl, RequestContext(request, h))
+
 def show_video(request, slug):
     video=Video.objects.get(slug=slug)
     ratings = Rating.objects.filter(video=video)
     avg_rating = 0
     if ratings:
         avg_rating = sum([r.value for r in ratings]) / len(ratings)
-    return render_to_response('video/display.html',
+    return render_ctx_to_response(request, 'video/display.html',
         {'video': video, 'rating': avg_rating, 'num_ratings': len(ratings)})
 
 def show_user(request, username):
     user=User.objects.get(username=username)
     up=UserProfile.objects.get(user__exact=user)
     videos = Video.objects.filter(submitter__exact=up)
-    return render_to_response('user.html', {'user': up, 'videos': videos})
+    return render_ctx_to_response(request, 'user.html',
+        {'profile': up, 'videos': videos})
 
 def show_tag(request, tag):
     tags=Tag.objects.filter(name__in=tag.split('+'))
@@ -46,7 +51,7 @@ def show_tag(request, tag):
         if t.name in related:
             del related[t.name]
 
-    return render_to_response('video/tag.html',
+    return render_ctx_to_response(request, 'video/tag.html',
         {'tag': tag,
         'tags': tags,
         'related': sorted(related.values(), key=lambda x: x.name),
@@ -92,4 +97,5 @@ def register(request):
     if created:
         return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
     else:
-        return render_to_response('registration/signup.html', params)
+        return render_ctx_to_response(request, 'registration/signup.html',
+            params)
