@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from nextvista.app.video.models import Video, Tag
+from nextvista import settings
 
 v_info_dict = {
     'queryset': Video.objects.all(),
@@ -27,3 +28,12 @@ urlpatterns = patterns('',
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^comments/', include('django.contrib.comments.urls.comments')),
 )
+
+# Extra stuff for running in debug mode.
+if settings.DEBUG:
+    import os
+    media_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),
+        '../media')
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve',
+            {'document_root': media_path}),)
