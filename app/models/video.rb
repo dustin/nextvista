@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 8
+# Schema version: 9
 #
 # Table name: videos
 #
@@ -23,6 +23,19 @@ class Video < ActiveRecord::Base
   belongs_to :language
 
   has_many :video_variants
+  has_many :ratings
 
   validates_presence_of :title, :descr, :long_descr, :duration, :language, :submitter
+
+  # Rate this video.
+  def rate(user, rating)
+    r=Rating.find_or_create_by_user_id_and_video_id(user, self)
+    r.value = rating
+    r.save!
+  end
+
+  def rating
+    ratings.average(:value, :conditions => {:video_id => self})
+  end
+
 end

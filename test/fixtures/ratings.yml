@@ -1,0 +1,22 @@
+# == Schema Information
+# Schema version: 9
+#
+# Table name: ratings
+#
+#  id       :integer       not null, primary key
+#  user_id  :integer       not null
+#  video_id :integer       not null
+#  value    :integer       not null
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  user_id: 1
+  video_id: 1
+  value: 3
+two:
+  id: 2
+  user_id: 2
+  video_id: 1
+  value: 4
