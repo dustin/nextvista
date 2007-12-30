@@ -1,0 +1,9 @@
+<ul>
+	<% @videos.each do |video| %>
+		<li>
+			<%= link_to video.title, video_url(video.url_slug) %>
+			<br/>
+			<%= video.descr %>
+		</li>
+	<% end %>
+</ul>

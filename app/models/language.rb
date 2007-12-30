@@ -11,4 +11,8 @@ class Language < ActiveRecord::Base
 
   validates_uniqueness_of :code, :case_sensitive => false
 
+  def to_s
+    code
+  end
+
 end

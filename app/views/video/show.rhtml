@@ -1,0 +1,12 @@
+<h3><%= @video.title %></h3>
+
+<ul class="postinfo">
+	<li>Author: 
+		<%= link_to @video.submitter.login, :controller => :user, :action => :show, :id => @video.submitter.login %>
+	</li>
+	<li>Language: <%= @video.language %></li>
+	<li>Tags: <%= tag_links(@video.tags) %></li>
+	<li>Rating:  <%= @video.rating %></li>
+	<li>Number of Votes:  <%= @video.ratings.size %></li>
+</ul>
+

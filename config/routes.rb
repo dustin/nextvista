@@ -17,6 +17,9 @@ ActionController::Routing::Routes.draw do |map|
   # instead of a file named 'wsdl'
   # map.connect ':controller/service.wsdl', :action => 'wsdl'
 
+  map.video 'video/:slug', :controller => 'video', :action => 'show'
+  map.tag 'tag/:name', :controller => 'tag', :action => 'show'
+
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'
   map.connect ':controller/:action/:id'
