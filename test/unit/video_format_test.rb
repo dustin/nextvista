@@ -6,7 +6,7 @@ class VideoFormatTest < Test::Unit::TestCase
   def test_new_format
     f=VideoFormat.new :name => 'Test Fmt', :mime_type => 'video/test'
     f.save!
-    assert_equal t, f.id
+    assert_equal f, VideoFormat.find(f.id)
   end
 
   def test_duplicate_format
