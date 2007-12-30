@@ -1,0 +1,28 @@
+# == Schema Information
+# Schema version: 8
+#
+# Table name: video_variants
+#
+#  id        :integer       not null, primary key
+#  video_id  :integer       not null
+#  format_id :integer       not null
+#  width     :integer       not null
+#  height    :integer       not null
+#  size      :integer       not null
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  video_id: 1
+  format_id: 1
+  width: 640
+  height: 480
+  size: 1929862
+two:
+  id: 2
+  video_id: 1
+  format_id: 2
+  width: 320
+  height: 200
+  size: 82753

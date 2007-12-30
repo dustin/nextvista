@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 7
+# Schema version: 8
 #
 # Table name: videos
 #
@@ -21,6 +21,8 @@ class Video < ActiveRecord::Base
 
   belongs_to :submitter, :class_name => "User", :foreign_key => "submitter_id"
   belongs_to :language
+
+  has_many :video_variants
 
   validates_presence_of :title, :descr, :long_descr, :duration, :language, :submitter
 end
