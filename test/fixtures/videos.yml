@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 5
+# Schema version: 6
 #
 # Table name: videos
 #
@@ -9,7 +9,7 @@
 #  language_id  :integer       not null
 #  duration     :integer       not null
 #  title        :string(128)   not null
-#  slug         :string(32)    not null
+#  url_slug     :string(32)    not null
 #  descr        :string(255)   not null
 #  long_descr   :string(255)   not null
 #
