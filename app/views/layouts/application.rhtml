@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Next Vista for Learning</title>
+
+<link rel="stylesheet" href="http://www.nextvista.org/wp-content/themes/nextvista/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="http://www.nextvista.org/css/nvfl_test.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/media/style.css" type="text/css" media="screen" />
+
+<link rel="alternate" type="application/rss+xml" title="Next Vista for Learning RSS Feed" href="http://www.nextvista.org/feed/" />
+
+<link rel="pingback" href="http://www.nextvista.org/xmlrpc.php" />
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.nextvista.org/xmlrpc.php?rsd" />
+<script src="http://www.nextvista.org/wp-content/plugins/UltimateTagWarrior/ultimate-tag-warrior-ajax-js.php?ajaxurl=http://www.nextvista.org/wp-content/plugins/UltimateTagWarrior/ultimate-tag-warrior-ajax.php" type="text/javascript"></script><script src="http://www.nextvista.org/wp-content/plugins/UltimateTagWarrior/ultimate-tag-warrior-js.php" type="text/javascript"></script></head>
+<body>
+<div id="wrapper">
+		<h1 id="banner"><a href="http://www.nextvista.org/">Next Vista for Learning</a></h1>
+		<h2 id="subbanner">at NextVista.org</h2>
+<div id="content">
+<ul id="menu">
+	<li id="home"><a href="http://www.nextvista.org/">home</a></li>
+
+	<li id="samples"><a href="http://www.nextvista.org/samples.phtml">sample videos</a></li>
+	<li id="starts"><a href="http://www.nextvista.org/collection-list-light-bulbs/">light bulbs</a></li>
+	<li id="views"><a href="http://www.nextvista.org/collection-list-global-views/">global views</a></li>
+	<li id="service"><a href="http://www.nextvista.org/collection-list-seeing-service/">seeing service</a></li>
+	<li id="about"><a href="http://www.nextvista.org/about">about</a></li>
+	<li id="contact"><a href="http://www.nextvista.org/contact">contact</a></li>
+<% if current_user && current_user != :false %>
+	<li id="userinfo">
+		<%= link_to "Logout #{current_user.login}", :controller => :account, :action => :logout %>
+	</li>
+<% else %>
+	<li id="login"><%= link_to "Login", :controller => :account, :action => :login %></li>
+<% end %>
+</ul>
+
+<%= yield %>
+
+</div>
+</div>
+<ul id="footer">
+  <li> <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></li>
+
+  <li><a href="http://validator.w3.org/check?uri=referer">XHTML</a></li>
+  <li id="copyright">Copyright &copy; {% now "Y" %} Next Vista for Learning. All
+rights reserved.</li>
+</ul>
+		</body>
+</html>
