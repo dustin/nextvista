@@ -17,7 +17,11 @@ class Tag < ActiveRecord::Base
   end
   
   def to_s
-    name
+    if display_name.nil?
+      name
+    else
+      display_name
+    end
   end
   
   def count
