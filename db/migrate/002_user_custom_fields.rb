@@ -1,10 +1,10 @@
 class UserCustomFields < ActiveRecord::Migration
   
   def self.up
-    add_column :users, :city, :string
-    add_column :users, :state, :string
-    add_column :users, :country, :string
-    add_column :users, :is_teacher, :boolean
+    add_column :users, :city, :string, :limit => 64
+    add_column :users, :state, :string, :limit => 2
+    add_column :users, :country, :string, :limit => 2
+    add_column :users, :is_teacher, :boolean, :default => false
     add_column :users, :descr, :string
     add_column :users, :referral, :string
   end
