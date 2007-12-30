@@ -1,0 +1,23 @@
+# == Schema Information
+# Schema version: 7
+#
+# Table name: video_formats
+#
+#  id        :integer       not null, primary key
+#  name      :string(64)    not null
+#  mime_type :string(32)    not null
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+mp4:
+  id: 1
+  name: mp4
+  mime_type: video/mp4
+mov:
+  id: 2
+  name: Quicktime
+  mime_type: video/quicktime
+flv:
+  id: 3
+  name: Flash Video
+  mime_type: video/x-flv
