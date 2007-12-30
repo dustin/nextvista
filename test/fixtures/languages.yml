@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 4
+# Schema version: 5
 #
 # Table name: languages
 #
@@ -8,9 +8,9 @@
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-one:
+en:
   id: 1
   code: en
-two:
+jp:
   id: 2
   code: jp

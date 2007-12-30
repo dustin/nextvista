@@ -1,0 +1,36 @@
+# == Schema Information
+# Schema version: 5
+#
+# Table name: videos
+#
+#  id           :integer       not null, primary key
+#  submitter_id :integer       not null
+#  submit_date  :datetime      not null
+#  language_id  :integer       not null
+#  duration     :integer       not null
+#  title        :string(128)   not null
+#  slug         :string(32)    not null
+#  descr        :string(255)   not null
+#  long_descr   :string(255)   not null
+#
+
+one:
+  id: 1
+  submitter_id: 1
+  submit_date: 2007-12-29 18:56:13
+  language_id: 1
+  duration: 395
+  title: Something Cool
+  url_slug: something-cool
+  descr: Here's a video about stuff.
+  long_descr: Here's a long description about stuff.
+two:
+  id: 2
+  submitter_id: 1
+  submit_date: 2007-12-29 18:57:27
+  language_id: 1
+  duration: 194
+  title: Something Less Cool
+  url_slug: something-less-cool
+  descr: This video is kind of boring.
+  long_descr: This description is even more boring.
