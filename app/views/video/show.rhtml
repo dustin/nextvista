@@ -2,7 +2,7 @@
 
 <ul class="postinfo">
 	<li>Author: 
-		<%= link_to @video.submitter.display_name, :controller => :user, :action => :show, :id => @video.submitter.login %>
+		<%= link_to @video.submitter.display_name, user_url(@video.submitter.login) %>
 	</li>
 	<li>Language: <%= @video.language %></li>
 	<li>Tags: <%= tag_links(@video.tags) %></li>

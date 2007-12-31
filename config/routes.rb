@@ -19,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.video 'video/:slug', :controller => 'video', :action => 'show'
   map.tag 'tag/:name', :controller => 'tag', :action => 'show'
+  map.user 'user/:login', :controller => 'user', :action => 'show'
 
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'
