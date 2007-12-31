@@ -9,6 +9,7 @@ class AccountController < ApplicationController
   end
 
   def login
+    subtitle 'Logging In'
     return unless request.post?
     self.current_user = User.authenticate(params[:login], params[:password])
     if logged_in?
@@ -22,6 +23,7 @@ class AccountController < ApplicationController
   end
 
   def signup
+    subtitle 'Sign Up'
     @user = User.new(params[:user])
     return unless request.post?
     @user.save!
