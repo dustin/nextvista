@@ -24,3 +24,17 @@
 		</div>
 	<% end %>
 </div>
+
+<% if current_user && current_user != :false %>
+	<h2>Post a Comment</h2>
+	<% form_for :comment, :url => {:controller => :comment, :action => :create} do |f| %>
+		<div>
+			<input type="hidden" name="comment[video_id]" value="<%= @video.id %>"/>
+			<label for="user_comment">Comment</label>
+		</div>
+		<div>
+			<%= f.text_area(:comment, :cols => 60, :rows => 10) %>
+		</div>
+		<div><%= submit_tag 'Comment' %></div>
+	<% end %>
+<% end %>
