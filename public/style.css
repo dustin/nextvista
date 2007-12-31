@@ -3,12 +3,12 @@ fieldset legend {
 	font-size: larger;
 }
 
-fieldset label span {
+fieldset label {
 	float: left;
 	width: 5em;
 }
 
-fieldset label input {
+fieldset input {
   margin-left: 6em;
 }
 
@@ -18,7 +18,7 @@ fieldset textarea {
 	height: 6em;
 }
 
-fieldset div {
+fieldset p {
   clear: left;
 }
 
@@ -29,6 +29,10 @@ fieldset + fieldset {
 .error {
 	font-weight: bolder;
 	color: red;
+}
+
+.fieldWithErrors input {
+  border: solid red 3px;
 }
 
 .cloud-small { font-size: 0.8em; }
