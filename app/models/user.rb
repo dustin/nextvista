@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 11
+# Schema version: 12
 #
 # Table name: users
 #
@@ -38,6 +38,9 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
   has_many :comments, :conditions => {:deleted => false}
+
+  has_and_belongs_to_many :roles, :class_name => "Role",
+    :join_table => "user_roles_map"
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
@@ -82,6 +85,15 @@ class User < ActiveRecord::Base
     else
       [first_name, last_name].join ' '
     end
+  end
+
+  # Does the user have this role?
+  def has_role?(role)
+    roles.map {|r| r.to_s.downcase}.include?(role.to_s.downcase)
+  end
+
+  def admin?
+    has_role? 'admin'
   end
 
   protected

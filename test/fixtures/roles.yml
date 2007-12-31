@@ -1,16 +1,19 @@
 # == Schema Information
 # Schema version: 12
 #
-# Table name: languages
+# Table name: roles
 #
 #  id   :integer       not null, primary key
-#  code :string(2)     not null
+#  name :string(255)   not null
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-en:
+one:
   id: 1
-  code: en
-jp:
+  name: role1
+two:
   id: 2
-  code: jp
+  name: role2
+admin:
+  id: 3
+  name: admin
