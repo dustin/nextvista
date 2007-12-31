@@ -7,6 +7,7 @@ class VideoController < ApplicationController
 
   def show
     @video=Video.find_by_url_slug params[:slug], :include => [:submitter, :language]
+    @comments=@video.comments
     subtitle "Video: #{@video.title}"
   end
 
