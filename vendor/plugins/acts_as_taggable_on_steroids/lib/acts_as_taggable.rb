@@ -55,7 +55,7 @@ module ActiveRecord #:nodoc:
             conditions << <<-END
               #{table_name}.id NOT IN
                 (SELECT #{Tagging.table_name}.taggable_id FROM #{Tagging.table_name}
-                 INNER JOIN #{Tag.table_name} ON #{Tagging.table_name}.tag_id = #{Tag.table_name}.id
+                 INNER JOIN #{Tag.table_name} ON #{Tagging.table_}.tag_id = #{Tag.table_name}.id
                  WHERE #{tags_condition(tags)} AND #{Tagging.table_name}.taggable_type = #{quote_value(base_class.name)})
             END
           else
@@ -98,7 +98,7 @@ module ActiveRecord #:nodoc:
           options = options.dup
           
           scope = scope(:find)
-          start_at = sanitize_sql(["#{Tagging.table_name}.created_at >= ?", options.delete(:start_at)]) if options[:start_at]
+          start_at = sanitize_sql(["#{Tagging.table_}.created_at >= ?", options.delete(:start_at)]) if options[:start_at]
           end_at = sanitize_sql(["#{Tagging.table_name}.created_at <= ?", options.delete(:end_at)]) if options[:end_at]
           
           conditions = [
@@ -120,10 +120,10 @@ module ActiveRecord #:nodoc:
           at_least  = sanitize_sql(['COUNT(*) >= ?', options.delete(:at_least)]) if options[:at_least]
           at_most   = sanitize_sql(['COUNT(*) <= ?', options.delete(:at_most)]) if options[:at_most]
           having    = [at_least, at_most].compact.join(' AND ')
-          group_by  = "#{Tag.table_name}.id, #{Tag.table_name}.name HAVING COUNT(*) > 0"
+          group_by  = "#{Tag.table_name}.id, #{Tag.table_name}.display_name, #{Tag.table_name}.name HAVING COUNT(*) > 0"
           group_by << " AND #{having}" unless having.blank?
           
-          { :select     => "#{Tag.table_name}.id, #{Tag.table_name}.name, COUNT(*) AS count", 
+          { :select     => "#{Tag.table_name}.id, #{Tag.table_name}.name, #{Tag.table_name}.display_name, COUNT(*) AS count", 
             :joins      => joins.join(" "),
             :conditions => conditions,
             :group      => group_by
