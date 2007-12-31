@@ -26,5 +26,12 @@ class CommentTest < Test::Unit::TestCase
     assert_equal 1, Video.find(1).comments.size
   end
 
+  def test_comments_from_user_aaron
+    assert_equal 1, users(:aaron).comments.length
+  end
+
+  def test_comments_from_user_quentin
+    assert_equal [], users(:quentin).comments
+  end
 
 end
