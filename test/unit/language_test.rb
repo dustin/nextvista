@@ -15,4 +15,8 @@ class LanguageTest < Test::Unit::TestCase
       l.save!
     end
   end
+
+  def test_to_s
+    assert_equal 'en', languages(:en).to_s
+  end
 end

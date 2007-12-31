@@ -56,9 +56,11 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_should_set_remember_token
+    assert !users(:quentin).remember_token?
     users(:quentin).remember_me
     assert_not_nil users(:quentin).remember_token
     assert_not_nil users(:quentin).remember_token_expires_at
+    assert users(:quentin).remember_token?
   end
 
   def test_should_unset_remember_token
