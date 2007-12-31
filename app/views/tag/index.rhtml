@@ -1,0 +1,3 @@
+<% tag_cloud @tags, %w(cloud-small cloud-medium cloud-large cloud-x-large) do |tag, css_class| %>
+  <%= link_to tag.to_s, tag_url(tag.name), :class => css_class %>
+<% end %>

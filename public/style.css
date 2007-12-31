@@ -21,3 +21,8 @@ fieldset + fieldset {
 	font-weight: bolder;
 	color: red;
 }
+
+.cloud-small { font-size: 0.8em; }
+.cloud-medium { font-size: 1em; }
+.cloud-large { font-size: 1.5em; }
+.cloud-x-large { font-size: 3em; }

@@ -26,7 +26,7 @@ class VideoTest < Test::Unit::TestCase
       :language => languages(:en), :duration => 152, :title => "This Is My Title",
       :descr => "Here's a description.", :long_descr => "Here's a long description."
     assert_difference Tag, :count do
-      v.tag_list = 'tag1, tag2, tag3'
+      v.tag_list = 'tag1 tag2 tag3'
       v.save!
     end
     assert_equal %w(tag1 tag2 tag3), v.tag_list.sort
