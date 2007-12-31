@@ -1,16 +1,93 @@
 <%= error_messages_for :user %>
+
 <% form_for :user do |f| -%>
-<p><label for="login">Login</label><br/>
-<%= f.text_field :login %></p>
+<fieldset class="aligned" id="requestor">
+  <legend>Credentials</legend>
 
-<p><label for="email">Email</label><br/>
-<%= f.text_field :email %></p>
+  <div>
+    <label><span>Login</span>
+      <%= f.text_field :login %>
+    </label>
+  </div>
 
-<p><label for="password">Password</label><br/>
-<%= f.password_field :password %></p>
+  <div>
+    <label><span>Password</span>
+      <%= f.password_field :password %>
+    </label>
+  </div>
 
-<p><label for="password_confirmation">Confirm Password</label><br/>
-<%= f.password_field :password_confirmation %></p>
+  <div>
+    <label><span>Confirm Password</span>
+      <%= f.password_field :password_confirmation %>
+    </label>
+  </div>
+
+</fieldset>
+
+<fieldset>
+  <legend>Personal Info</legend>
+
+  <div>
+    <label><span>First Name</span>
+      <%= f.text_field :first_name %>
+    </label>
+  </div>
+
+  <div>
+    <label><span>Last Name</span>
+      <%= f.text_field :last_name %>
+    </label>
+  </div>
+
+  <div>
+    <label><span>Email</span>
+      <%= f.text_field :email %>
+    </label>
+  </div>
+
+  <div>
+    <label><span>City</span>
+      <%= f.text_field :city %>
+    </label>
+  </div>
+
+  <div>
+    <label><span>State/Province</span>
+      <%= f.text_field :state %>
+    </label>
+  </div>
+
+  <div>
+    <label><span>Country</span>
+      <%= f.text_field :country %>
+    </label>
+  </div>
+
+</fieldset>
+
+<fieldset>
+  <legend>More About You</legend>
+
+  <div>
+    <label><span>Are you a teacher?</span>
+      <%= f.check_box :is_teacher %>
+    </label>
+  </div>
+
+  <div>
+    <label><span>Tell us a little about yourself.</span>
+      <%= f.text_area :descr %>
+    </label>
+  </div>
+
+  <div>
+    <label><span>How did you hear about us?</span>
+      <%= f.text_area :referral %>
+    </label>
+  </div>
+
+</fieldset>
 
 <p><%= submit_tag 'Sign up' %></p>
 <% end -%>
+

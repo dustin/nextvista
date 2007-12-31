@@ -3,14 +3,23 @@ fieldset legend {
 	font-size: larger;
 }
 
-fieldset label {
+fieldset label span {
 	float: left;
-	width: 10em;
+	width: 5em;
+}
+
+fieldset label input {
+  margin-left: 6em;
 }
 
 fieldset textarea {
+  margin-left: 6em;
 	width: 40em;
 	height: 6em;
+}
+
+fieldset div {
+  clear: left;
 }
 
 fieldset + fieldset {
