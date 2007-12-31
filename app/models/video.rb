@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 10
+# Schema version: 11
 #
 # Table name: videos
 #
@@ -24,6 +24,7 @@ class Video < ActiveRecord::Base
 
   has_many :video_variants
   has_many :ratings
+  has_many :comments, :conditions => {:deleted => false}
 
   validates_presence_of :title, :descr, :long_descr, :duration, :language, :submitter
 
