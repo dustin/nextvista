@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 9
+# Schema version: 10
 #
 # Table name: users
 #
@@ -18,6 +18,8 @@
 #  is_teacher                :boolean       
 #  descr                     :string(255)   
 #  referral                  :string(255)   
+#  first_name                :string(255)   
+#  last_name                 :string(255)   
 #
 
 require 'digest/sha1'
@@ -70,6 +72,14 @@ class User < ActiveRecord::Base
     self.remember_token_expires_at = nil
     self.remember_token            = nil
     save(false)
+  end
+
+  def display_name
+    if first_name.blank? and last_name.blank?
+      login
+    else
+      [first_name, last_name].join ' '
+    end
   end
 
   protected

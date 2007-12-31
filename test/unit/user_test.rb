@@ -68,6 +68,14 @@ class UserTest < Test::Unit::TestCase
     assert_nil users(:quentin).remember_token
   end
 
+  def test_display_name_quentin
+    assert_equal "Quentin Something", users(:quentin).display_name
+  end
+
+  def test_display_name_aaron
+    assert_equal "aaron", users(:aaron).display_name
+  end
+
   protected
     def create_user(options = {})
       User.create({ :login => 'quire', :email => 'quire@example.com', :password => 'quire', :password_confirmation => 'quire' }.merge(options))

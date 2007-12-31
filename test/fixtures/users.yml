@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 9
+# Schema version: 10
 #
 # Table name: users
 #
@@ -18,10 +18,14 @@
 #  is_teacher                :boolean       
 #  descr                     :string(255)   
 #  referral                  :string(255)   
+#  first_name                :string(255)   
+#  last_name                 :string(255)   
 #
 
 quentin:
   id: 1
+  first_name: Quentin
+  last_name: Something
   login: quentin
   email: quentin@example.com
   salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
