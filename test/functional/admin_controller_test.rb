@@ -51,4 +51,10 @@ class AdminControllerTest < Test::Unit::TestCase
     assert_equal 3, assigns['comment'].id
   end
 
+  def test_recent_comments
+    login_as :quentin
+    get :recent_comments
+    assert_equal [3, 2, 1], assigns['comments'].map(&:id)
+  end
+
 end

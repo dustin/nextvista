@@ -11,6 +11,15 @@ class AdminController < ApplicationController
     @comment.save!
   end
 
+  def index
+    subtitle 'Administative Stuff'
+  end
+
+  def recent_comments
+    subtitle 'Admin:  Recent Comments'
+    @comments=Comment.find :all, :limit => 50, :order => "created_at desc"
+  end
+
   protected
 
   def authorized?

@@ -1,0 +1,12 @@
+<div id="comment_<%= comment.id %>" class="comment <%= comment.deleted ? 'deleted' : '' %>">
+	<div class="commentheader">
+		Comment on <%= link_to comment.video.title, video_url(comment.video.url_slug) %>
+		from <%= link_to comment.user.display_name, user_url(comment.user.login) %>
+		on <%= comment.created_at %>
+		<% if current_user && current_user != :false && current_user.admin? %>
+			<%= link_to_remote(tag("img", {:src => '/images/trash.gif', :class => 'trash', :alt => '[delete]'}),
+				:url => {:controller => 'admin', :action => 'toggle_comment_delete', :id => comment.id }) %>
+		<% end %>
+	</div>
+	<%= content_tag 'div', user_content(comment.comment), :class => 'commentbody' %>
+</div>

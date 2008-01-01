@@ -31,7 +31,7 @@ two:
   public: true
   deleted: false
   ip_address: 127.0.0.1
-two:
+deleted:
   id: 3
   user_id: 3
   video_id: 1
