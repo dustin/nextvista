@@ -1,0 +1,5 @@
+if @comment.deleted
+  page["comment_#{@comment.id}"].add_class_name 'deleted'
+else
+  page["comment_#{@comment.id}"].remove_class_name 'deleted'
+end

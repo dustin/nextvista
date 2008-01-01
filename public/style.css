@@ -35,6 +35,14 @@ fieldset + fieldset {
   border: solid red 3px;
 }
 
+img.trash {
+	border: none;
+}
+
+.deleted {
+	text-decoration: line-through;
+}
+
 .cloud-small { font-size: 0.8em; }
 .cloud-medium { font-size: 1em; }
 .cloud-large { font-size: 1.5em; }
