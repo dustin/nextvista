@@ -1,0 +1,7 @@
+<div class="comment">
+	<div class="commentheader">
+		Comment from <%= link_to comment.user.display_name, user_url(comment.user.login) %>
+		on <%= comment.created_at %>
+	</div>
+	<%= content_tag 'div', user_content(comment.comment), :class => 'commentbody' %>
+</div>
