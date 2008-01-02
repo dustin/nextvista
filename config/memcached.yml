@@ -5,10 +5,10 @@ defaults:
   c_threshold: 10000
   compression: true
   debug: false
-  namespace: app
-  sessions: false
+  namespace: nv
+  sessions: true
   session_servers: false
-  fragments: false
+  fragments: true
   memory: 64
   servers: localhost:11211
   benchmarking: true
