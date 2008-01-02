@@ -1,9 +1,9 @@
-	<ul class="collectionlist">
-		<% @videos.each do |video| %>
-			<li class="listitem <%= video.tag_list %>">
-				<%= link_to video.title, video_url(video.url_slug) %>
-				<br/>
-				<%= video.descr %>
-			</li>
-		<% end %>
-	</ul>
+<ul class="collectionlist">
+	<% @videos.each do |video| %>
+		<li class="listitem <%= video.tag_list %>">
+			<%= link_to video.title, video_url(video.url_slug) %>
+			<br/>
+			<%= video.descr %>
+		</li>
+	<% end %>
+</ul>
