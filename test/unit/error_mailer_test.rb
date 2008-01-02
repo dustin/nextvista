@@ -16,6 +16,11 @@ class ErrorMailerTest < Test::Unit::TestCase
     @expected.mime_version = '1.0'
   end
 
+  def test_nothing
+    # XXX:  need a test here.
+    assert true
+  end
+
   private
     def read_fixture(action)
       IO.readlines("#{FIXTURES_PATH}/error_mailer/#{action}")
