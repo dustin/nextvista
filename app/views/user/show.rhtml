@@ -1,8 +1,9 @@
 <h3>Author Archive</h3>
 
-<div class="narrowcolumn">
-  <h4><%= @user.display_name %></h4>
+<% cache do %>
+	<div class="narrowcolumn">
+	  <h4><%= @user.display_name %></h4>
 
-  <%= render :partial => 'video/video_list' %>
-  
-</div>
+	  <%= render :partial => 'video/video_list' %>  
+	</div>
+<% end %>

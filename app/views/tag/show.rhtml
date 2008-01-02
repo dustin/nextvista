@@ -1,16 +1,18 @@
 <h1>Showing Videos Tagged with <%= tag_links @tags, '+' %></h1>
 
-<div class="narrowcolumn">
-<%= render :partial => '/video/video_list' %>
-</div>
+<% cache do %>
+	<div class="narrowcolumn">
+	<%= render :partial => '/video/video_list' %>
+	</div>
 
-<% unless @related.empty? %>
-  <div id="sidebar">
-    <h2>Related Tags</h2>
-    <ul>
-      <% @related.each do |tag| %>
-        <%= link_to tag, tag_url([@tagnames + [tag.name]].join(' ')) %>
-      <% end %>
-    </ul>
-  </div>
+	<% unless @related.empty? %>
+	  <div id="sidebar">
+	    <h2>Related Tags</h2>
+	    <ul>
+	      <% @related.each do |tag| %>
+	        <%= link_to tag, tag_url([@tagnames + [tag.name]].join(' ')) %>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
 <% end %>

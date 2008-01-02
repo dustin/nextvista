@@ -1,5 +1,7 @@
 <h3>Video List</h3>
 
 <div class="narrowcolumn">
-<%= render :partial => 'video_list' %>
+	<% cache do %>
+		<%= render :partial => 'video_list' %>
+	<% end %>
 </div>
