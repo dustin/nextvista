@@ -6,7 +6,7 @@ class ErrorMailer < ActionMailer::Base
     content_type "text/html" 
 
     @recipients         = 'dustin@spy.net'
-    @from               = 'Money Error Mailer <dustin+rails@spy.net>'
+    @from               = 'NextVista Error Mailer <dustin+nvbeta@spy.net>'
     @subject            = "[Error] exception in #{env['REQUEST_URI']}" 
     @sent_on            = sent_on
     @body["exception"]  = exception
