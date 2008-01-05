@@ -29,7 +29,7 @@
 	<li id="service"><a href="http://www.nextvista.org/collection-list-seeing-service/">seeing service</a></li>
 	<li id="about"><a href="http://www.nextvista.org/about">about</a></li>
 	<li id="contact"><a href="http://www.nextvista.org/contact">contact</a></li>
-<% if current_user && current_user != :false %>
+<% if logged_in? %>
 	<li id="userinfo">
 		<%= link_to "Logout #{current_user.login}", :controller => :account, :action => :logout %>
 	</li>
