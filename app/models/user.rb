@@ -24,6 +24,10 @@
 
 require 'digest/sha1'
 class User < ActiveRecord::Base
+
+  attr_accessible :login, :email, :password, :password_confirmation, :city, :state, :country
+  attr_accessible :is_teacher, :descr, :referral, :first_name, :last_name
+
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
