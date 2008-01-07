@@ -1,0 +1,65 @@
+<div id="libraries">
+<h3 id="video">Video Collections</h3>
+
+<div class="section one">
+<p class="title"><%= link_to 'Light Bulbs', tag_path('lightbulbs') %></p>
+<p>Introductions to topics by students and teachers. These are another avenue for exploring a wide variety of topics.</p>
+<p class="bottom">(<%= link_to 'learn more', tag_path('lightbulbs') %>)</p>
+</div>
+
+<div class="section two">
+<p class="title"><%= link_to 'Global Views', tag_path('globalviews') %></p>
+<p>Descriptions of life and activities in schools and communities around the world, made by and for teenagers.</p>
+<p class="bottom">(<%= link_to 'learn more', tag_path('globalviews') %>)</p>
+</div>
+
+<div class="section three">
+<p class="title"><%= link_to 'Seeing Service', tag_path('seeingservice') %></p>
+<p>Profiles of those who make life better for others. These are to remind us that there are good people all around us.</p>
+<p class="bottom">(<%= link_to 'learn more', tag_path('seeingservice') %>)</p>
+</div>
+
+</div>
+
+<div id="other">
+<h2>What's NextVista.org?</h2>
+<p id="blurb">An online library of free videos for learners everywhere - find resources to help you
+<%= link_to 'learn just about anything', tag_path('lightbulbs') %>,
+<%= link_to 'meet people who make a difference in their communities', tag_path('seeingservice') %>,
+and even <%= link_to 'discover new parts of the world', tag_path('globalviews') %>.
+And Next Vista for Learning wants to post your educational videos online, too.
+Everyone has an insight to share and yours may be just what some student or teacher somewhere needs!
+</p>
+
+<div class="bottom" style="clear:both;"></div>
+
+<h3>Other Features</h3>
+
+<div class="section newsletter">
+<p class="title">Featured Video</p>
+
+<p id="videotitle"><a href="http://www.nextvista.org/2007/08/20/ukiyoe/"
+	rel="bookmark" title="Permanent Link to Ukiyoe">Ukiyoe</a>
+</p>
+<p id="videocollection">
+	(Subject Area:
+		<%= link_to 'Light Bulbs', tag_path('lightbulbs'),
+			:title => "View all posts in Light Bulbs", :style => "display: none", :rel => "category tag" %>
+		<%= link_to 'Visual Arts', tag_path('visualarts'),
+			:title => "View all posts in Visual Arts", :rel => "category tag" %>)
+</p>
+
+<p><a href="http://www.nextvista.org/2007/08/20/ukiyoe/" rel="bookmark" title="Permanent Link to Ukiyoe"><img alt="Defining the art style of Ukiyoe" src="http://www.nextvista.org/wp-content/uploads/2007/11/ukiyoe.jpg" /></a></p>
+<p>From the <%= link_to 'Light Bulbs', tag_path('lightbulbs') %> collection...</p>
+<p class="bottom" style="clear:both;"></p>
+
+</div>
+
+<div class="section soon right">
+<p class="title"><a href="/newsletter">Newsletter</a></p>
+<p>Sign up for the NextVista.org e-mail newsletter. Stay up to speed on how we're helping learners everywhere.</p>
+
+<p class="bottom">(<a href="/newsletter">learn more</a>)</p>
+</div>
+</div>
+
