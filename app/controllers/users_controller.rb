@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
-  
 
   # render new.rhtml
   def new
+  end
+
+  def show
+    @user=User.find_by_login params[:login]
+    subtitle "User Archive: #{@user.display_name}"
+    @videos=Video.find :all, :conditions => { :submitter_id => @user.id}
   end
 
   def create

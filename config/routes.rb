@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.video 'video/:slug', :controller => 'video', :action => 'show'
   map.tag 'tag/:name', :controller => 'tag', :action => 'show'
-  map.user 'user/:login', :controller => 'user', :action => 'show'
+  map.user 'users/:login', :controller => 'users', :action => 'show'
 
   map.resources :users
   map.resource :session

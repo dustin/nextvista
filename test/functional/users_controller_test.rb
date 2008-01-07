@@ -9,7 +9,7 @@ class UsersControllerTest < Test::Unit::TestCase
   # Then, you can remove it from this and the units test.
   include AuthenticatedTestHelper
 
-  fixtures :users
+  fixtures :users, :videos
 
   def setup
     @controller = UsersController.new
@@ -55,7 +55,18 @@ class UsersControllerTest < Test::Unit::TestCase
       assert_response :success
     end
   end
-  
+
+  def test_show_quentin
+    get :show, :login => 'quentin'
+    assert_equal users(:quentin), assigns['user']
+    assert_equal [videos(:one), videos(:two)], assigns['videos']
+  end
+
+  def test_show_aaron
+    get :show, :login => 'aaron'
+    assert_equal users(:aaron), assigns['user']
+    assert_equal [], assigns['videos']
+  end
 
   protected
     def create_user(options = {})
