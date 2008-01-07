@@ -23,7 +23,7 @@ class AdminController < ApplicationController
   protected
 
   def authorized?
-    current_user.admin?
+    logged_in? && current_user.admin?
   end
 
 end

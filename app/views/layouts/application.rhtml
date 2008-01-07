@@ -31,10 +31,10 @@
 	<li id="contact"><a href="http://www.nextvista.org/contact">contact</a></li>
 <% if logged_in? %>
 	<li id="userinfo">
-		<%= link_to "Logout #{current_user.login}", :controller => :account, :action => :logout %>
+		<%= link_to "Logout #{current_user.login}", logout_url %>
 	</li>
 <% else %>
-	<li id="login"><%= link_to "Login", :controller => :account, :action => :login %></li>
+	<li id="login"><%= link_to "Login", login_url %></li>
 <% end %>
 </ul>
 

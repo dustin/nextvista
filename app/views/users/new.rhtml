@@ -1,0 +1,81 @@
+<%= error_messages_for :user %>
+
+<% form_for :user, :url => users_path do |f| -%>
+<fieldset class="aligned" id="requestor">
+  <legend>Credentials</legend>
+
+  <p>
+    <label for="user_login">Login</label>
+    <%= f.text_field :login %>
+  </p>
+
+  <p>
+    <label for="user_password">Password</label>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <label for="user_password_confirmation">Confirm Password</label>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+</fieldset>
+
+<fieldset>
+  <legend>Personal Info</legend>
+
+  <p>
+    <label for="user_first_name">First Name</label>
+    <%= f.text_field :first_name %>
+  </p>
+
+  <p>
+    <label for="user_last_name">Last Name</label>
+    <%= f.text_field :last_name %>
+  </p>
+
+  <p>
+    <label for="user_email">Email</label
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <label for="user_city">City</label>
+    <%= f.text_field :city %>
+  </p>
+
+  <p>
+    <label for="user_state">State/Province</label>
+    <%= f.text_field :state %>
+  </p>
+
+  <p>
+    <label for="user_country">Country</label>
+    <%= f.text_field :country %>
+  </p>
+
+</fieldset>
+
+<fieldset>
+  <legend>More About You</legend>
+
+  <p>
+    <label for="user_is_teacher">Are you a teacher?</label>
+    <%= f.check_box :is_teacher %>
+  </p>
+
+  <p>
+    <label for="user_descr">Tell us a little about yourself.</label>
+    <%= f.text_area :descr %>
+  </p>
+
+  <p>
+    <label for="user_referral">How did you hear about us?</label>
+    <%= f.text_area :referral %>
+  </p>
+
+</fieldset>
+
+<p><%= submit_tag 'Sign up' %></p>
+<% end -%>
+

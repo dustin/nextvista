@@ -23,7 +23,11 @@ class ApplicationController < ActionController::Base
     title "#{DEFAULT_TITLE} - #{str}"
   end
 
-  protected  
+  protected
+
+  def new_session
+    login_url
+  end
 
   def log_error(exception) 
     super(exception)

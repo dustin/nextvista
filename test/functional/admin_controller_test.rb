@@ -26,13 +26,13 @@ class AdminControllerTest < Test::Unit::TestCase
 
   def test_authentication_required
     get :index
-    assert_redirected_to :controller => :account, :action => :login
+    assert_redirected_to :controller => :session, :action => :new
   end
 
   def test_authorization
     login_as :aaron
     get :index
-    assert_redirected_to :controller => :account, :action => :login
+    assert_redirected_to :controller => :session, :action => :new
   end
 
   def test_toggle_comment_delete

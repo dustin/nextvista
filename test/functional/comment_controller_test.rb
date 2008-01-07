@@ -19,7 +19,7 @@ class CommentControllerTest < Test::Unit::TestCase
   def test_new_comment_without_login
     post :create, :comment => {:video => videos(:one), :comment => "Hi"}
     assert_response :redirect
-    assert_redirected_to :controller => 'account', :action => 'login'
+    assert_redirected_to :controller => 'session', :action => 'new'
   end
 
   def test_new_comment

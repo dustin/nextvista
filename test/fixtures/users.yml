@@ -1,27 +1,3 @@
-# == Schema Information
-# Schema version: 12
-#
-# Table name: users
-#
-#  id                        :integer       not null, primary key
-#  login                     :string(40)    not null
-#  email                     :string(100)   not null
-#  crypted_password          :string(40)    
-#  salt                      :string(40)    
-#  created_at                :datetime      not null
-#  updated_at                :datetime      
-#  remember_token            :string(255)   
-#  remember_token_expires_at :datetime      
-#  city                      :string(64)    
-#  state                     :string(2)     
-#  country                   :string(2)     
-#  is_teacher                :boolean       
-#  descr                     :string(255)   
-#  referral                  :string(255)   
-#  first_name                :string(255)   
-#  last_name                 :string(255)   
-#
-
 quentin:
   id: 1
   first_name: Quentin
@@ -30,16 +6,13 @@ quentin:
   email: quentin@example.com
   salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
   crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
-  #crypted_password: "ce2/iFrNtQ8=\n" # quentin, use only if you're using 2-way encryption
   created_at: <%= 5.days.ago.to_s :db %>
-  # activated_at: <%= 5.days.ago.to_s :db %> # only if you're activating new signups
 aaron:
   id: 2
   login: aaron
   email: aaron@example.com
   salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
   crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
-  # activation_code: aaronscode # only if you're activating new signups
   created_at: <%= 1.days.ago.to_s :db %>
 thirdguy:
   id: 3
