@@ -6,7 +6,7 @@ defaults:
   compression: true
   debug: false
   namespace: nv
-  sessions: true
+  sessions: false
   session_servers: false
   fragments: true
   memory: 64
