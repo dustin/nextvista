@@ -9,6 +9,7 @@ class AdminController < ApplicationController
     @comment=Comment.find params[:id].to_i
     @comment.deleted=!@comment.deleted
     @comment.save!
+    request.format = :js
   end
 
   def index

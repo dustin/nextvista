@@ -5,13 +5,18 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '1.2.6' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.0.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here
+
+  config.action_controller.session = {
+    :session_key => '_nextvista_session',
+    :secret      => '743f70b92820a5af722532f0b2d86131ebea51a48ca363f7560bdefe68dd8450b84d8c9175ea2d8a0577528d8362cce17c0eb8e9ff616e402296b69675d760a5'
+  }
 
   # Skip frameworks you're not going to use (only works if using vendor/rails)
   # config.frameworks -= [ :action_web_service, :action_mailer ]
