@@ -9,6 +9,8 @@
 
 class Language < ActiveRecord::Base
 
+  attr_accessible :code
+
   validates_uniqueness_of :code, :case_sensitive => false
 
   def to_s

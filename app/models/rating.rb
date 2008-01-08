@@ -11,6 +11,8 @@
 
 class Rating < ActiveRecord::Base
 
+  attr_accessible :video_id, :value
+
   validates_presence_of :user, :video, :value
 
   belongs_to :user

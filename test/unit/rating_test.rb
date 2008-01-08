@@ -8,7 +8,9 @@ class RatingTest < Test::Unit::TestCase
   end
 
   def test_new_rating
-    Video.find(1).ratings << Rating.new(:user => users(:thirdguy), :value => 4)
+    r=Rating.new :value => 4
+    r.user = users(:thirdguy)
+    Video.find(1).ratings << r
     assert_in_delta (11.0/3.0), Video.find(1).rating, 2 ** -20
   end
 

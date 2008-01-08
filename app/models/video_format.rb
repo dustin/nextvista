@@ -10,6 +10,8 @@
 
 class VideoFormat < ActiveRecord::Base
 
+  attr_accessible :name, :mime_type
+
   validates_presence_of :name, :mime_type
   validates_uniqueness_of :name, :mime_type
 
