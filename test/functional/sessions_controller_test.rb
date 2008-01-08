@@ -1,10 +1,10 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'session_controller'
+require 'sessions_controller'
 
 # Re-raise errors caught by the controller.
-class SessionController; def rescue_action(e) raise e end; end
+class SessionsController; def rescue_action(e) raise e end; end
 
-class SessionControllerTest < Test::Unit::TestCase
+class SessionsControllerTest < Test::Unit::TestCase
   # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
   # Then, you can remove it from this and the units test.
   include AuthenticatedTestHelper
@@ -12,7 +12,7 @@ class SessionControllerTest < Test::Unit::TestCase
   fixtures :users
 
   def setup
-    @controller = SessionController.new
+    @controller = SessionsController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
   end
