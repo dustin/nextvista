@@ -13,6 +13,8 @@
 
 class VideoVariant < ActiveRecord::Base
 
+  attr_accessible :format_id, :width, :height, :size
+
   validates_presence_of :video, :format, :width, :height, :size
 
   belongs_to :video

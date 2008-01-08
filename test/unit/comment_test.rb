@@ -12,9 +12,10 @@ class CommentTest < Test::Unit::TestCase
   end
 
   def test_comment_creation
-    c=Comment.new :user => users(:quentin), :video => videos(:one),
-      :created_at => Time.now, :comment => "Yeah, it's awesome because I made it.",
-      :ip_address => '127.0.0.1'
+    c=Comment.new :created_at => Time.now, :comment => "Yeah, it's awesome because I made it."
+    c.user = users(:quentin)
+    c.ip_address = '127.0.0.1'
+    c.video = videos(:one)
     c.save!
     assert_equal 3, Video.find(1).comments.length
   end

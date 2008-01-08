@@ -19,6 +19,8 @@ class Video < ActiveRecord::Base
   acts_as_taggable
   acts_as_slugable :source_column => :title, :target_column => :url_slug
 
+  attr_accessible :submit_date, :language, :duration, :title, :descr, :long_descr
+
   belongs_to :submitter, :class_name => "User", :foreign_key => "submitter_id"
   belongs_to :language
 

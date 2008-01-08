@@ -17,7 +17,7 @@ class CommentControllerTest < Test::Unit::TestCase
   end
 
   def test_new_comment_without_login
-    post :create, :comment => {:video => videos(:one), :comment => "Hi"}
+    post :create, :comment => {:video_id => videos(:one).id, :comment => "Hi"}
     assert_response :redirect
     assert_redirected_to :controller => 'session', :action => 'new'
   end
@@ -25,14 +25,14 @@ class CommentControllerTest < Test::Unit::TestCase
   def test_new_comment
     login_as :quentin
     assert_difference Comment, :count do
-      post :create, :comment => {:video => videos(:one), :comment => "Hi"}
+      post :create, :comment => {:video_id => videos(:one).id, :comment => "Hi"}
     end
   end
 
   def test_new_comment_fake_user
     login_as :quentin
     assert_difference Comment, :count do
-      post :create, :comment => {:video => videos(:one), :comment => "Hi", :user_id => 2}
+      post :create, :comment => {:video_id => videos(:one).id, :comment => "Hi", :user_id => 2}
     end
     assert_equal 1, assigns['comment'].user_id
   end
@@ -40,7 +40,7 @@ class CommentControllerTest < Test::Unit::TestCase
   def test_new_comment_fake_ip
     login_as :quentin
     assert_difference Comment, :count do
-      post :create, :comment => {:video => videos(:one), :comment => "Hi", :ip_address => "1.2.3.4"}
+      post :create, :comment => {:video_id => videos(:one).id, :comment => "Hi", :ip_address => "1.2.3.4"}
     end
     assert_equal "0.0.0.0", assigns['comment'].ip_address
   end

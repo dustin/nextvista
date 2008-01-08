@@ -15,6 +15,8 @@
 
 class Comment < ActiveRecord::Base
 
+  attr_accessible :video_id, :comment, :public
+
   validates_presence_of :user, :video, :comment, :ip_address
 
   belongs_to :user
