@@ -14,7 +14,7 @@
 
 <h2>Comments</h2>
 <div id="comments">
-	<%= render :partial => 'comment', :collection => @comments %>
+	<%= render :partial => @comments %>
 </div>
 
 <% if current_user && current_user != :false %>
