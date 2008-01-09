@@ -13,12 +13,18 @@ role :app, "basket.west.spy.net"
 role :web, "basket.west.spy.net"
 role :db,  "basket.west.spy.net", :primary => true
 
-desc "Starting happens via lighttpd.  Just need to stop here."
+NAME = "nextvista"
+
+desc "Starting and stopping via god."
 deploy.task :start do
-  deploy.stop
+  run "god start #{NAME}"
 end
-desc "Starting happens via lighttpd.  Just need to stop here."
+desc "Starting and stopping via god."
 deploy.task :restart do
-  deploy.stop
+  run "god restart #{NAME}"
+end
+desc "Starting and stopping via god."
+deploy.task :stop do
+  run "god stop #{NAME}"
 end
 
