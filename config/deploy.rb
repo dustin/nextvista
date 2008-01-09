@@ -13,20 +13,20 @@ role :app, "basket.west.spy.net"
 role :web, "basket.west.spy.net"
 role :db,  "basket.west.spy.net", :primary => true
 
-NAME = "nextvista"
-
 desc "Starting and stopping via god."
 deploy.task :start do
   sudo "god load #{deploy_to}/current/config/god.config"
-  sudo "god start #{NAME}"
+  sudo "god start #{application}"
 end
+
 desc "Starting and stopping via god."
 deploy.task :restart do
-  sudo "god restart #{NAME}"
+  sudo "god restart #{application}"
 end
+
 desc "Starting and stopping via god."
 deploy.task :stop do
-  sudo "god stop #{NAME}"
-  sudo "god remove #{NAME}"
+  sudo "god stop #{application}"
+  sudo "god remove #{application}"
 end
 
