@@ -1,5 +1,5 @@
 set :application, "nextvista"
-set :repository,  "http://hg.west.spy.net/hg/web/nextvista/"
+set :repository,  "http://hg.west.spy.net/hg/web/#{application}/"
 set :runner, 'www'
 
 # If you aren't deploying to /u/apps/#{application} on the target
