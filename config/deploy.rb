@@ -17,14 +17,16 @@ NAME = "nextvista"
 
 desc "Starting and stopping via god."
 deploy.task :start do
-  run "god start #{NAME}"
+  sudo "god load #{deploy_to}/current/config/god.config"
+  sudo "god start #{NAME}"
 end
 desc "Starting and stopping via god."
 deploy.task :restart do
-  run "god restart #{NAME}"
+  sudo "god restart #{NAME}"
 end
 desc "Starting and stopping via god."
 deploy.task :stop do
-  run "god stop #{NAME}"
+  sudo "god stop #{NAME}"
+  sudo "god remove #{NAME}"
 end
 
