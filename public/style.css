@@ -8,7 +8,7 @@ fieldset label {
 	width: 5em;
 }
 
-fieldset input {
+fieldset input, fieldset select {
   margin-left: 6em;
 }
 

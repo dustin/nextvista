@@ -13,11 +13,11 @@
 
 class VideoVariant < ActiveRecord::Base
 
-  attr_accessible :format_id, :width, :height, :size
+  attr_accessible :video, :format_id, :width, :height, :size
 
-  validates_presence_of :video, :format, :width, :height, :size
+  validates_presence_of :format, :width, :height, :size
 
   belongs_to :video
-  belongs_to :format
+  belongs_to :format, :class_name => "VideoFormat", :foreign_key => "format_id"
 
 end

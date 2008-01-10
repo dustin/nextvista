@@ -1,0 +1,53 @@
+<% form_tag({:action => "new"}, {:multipart => true}) do %>
+	<fieldset>
+		<legend>Video Properties</legend>
+
+		<div>
+			<label for="video_title">Title</label>
+			<%= text_field :video, :title %>
+		</div>
+
+		<div>
+			<label for="video_descr">Summary</label>
+			<%= text_area :video, :descr %>
+		</div>
+
+		<div>
+			<label for="video_long_descr">Long Description</label>
+			<%= text_area :video, :long_descr %>
+		</div>
+
+		<div>
+			<label for="video_language">Language</label>
+			<%= collection_select("video", "language_id", Language.find(:all), "id", "code") %>
+		</div>
+
+		<div>
+			<label for="video_duration">Duration (seconds)</label>
+			<%= text_field :video, :duration %>
+		</div>
+		
+	</fieldset>
+
+	<fieldset>
+		<legend>Video</legend>
+
+		<% fields_for "video[variant_attributes][]", @video.video_variants[0] do |f| %>
+			<div>
+				<label for="video_variant_width">Width</label>
+				<%= f.text_field :width %>
+			</div>
+			<div>
+				<label for="video_variant_height">Height</label>
+				<%= f.text_field :height %>
+			</div>
+		<% end %>
+
+		<div>
+			<label for="video_file">Video File</label>
+			<%= file_field_tag :video_file %>
+		</div>
+
+		<%= submit_tag  "Save" %>
+	</fieldset>
+<% end %>

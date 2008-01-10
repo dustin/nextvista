@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   # instead of a file named 'wsdl'
   # map.connect ':controller/service.wsdl', :action => 'wsdl'
 
+  map.video 'video/new', :controller => 'video', :action => 'new'
   map.video 'video/:slug', :controller => 'video', :action => 'show'
   map.tag 'tag/:name', :controller => 'tag', :action => 'show'
   map.user 'users/:login', :controller => 'users', :action => 'show'
