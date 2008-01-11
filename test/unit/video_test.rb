@@ -7,7 +7,7 @@ class VideoTest < Test::Unit::TestCase
 
   def test_video_sluggery
     v=Video.new :submit_date => Time.now,
-      :language => languages(:en), :duration => 152, :title => "This Is My Title",
+      :language_id => languages(:en).id, :duration => 152, :title => "This Is My Title",
       :descr => "Here's a description.", :long_descr => "Here's a long description."
     v.submitter = users(:quentin)
     v.save!
@@ -16,7 +16,7 @@ class VideoTest < Test::Unit::TestCase
 
   def test_slug_collision
     v=Video.new :submit_date => Time.now,
-      :language => languages(:en), :duration => 152, :title => "Something Cool",
+      :language_id => languages(:en).id, :duration => 152, :title => "Something Cool",
       :descr => "Here's a description.", :long_descr => "Here's a long description."
     v.submitter = users(:quentin)
     v.save!
@@ -25,7 +25,7 @@ class VideoTest < Test::Unit::TestCase
 
   def test_tags
     v=Video.new :submit_date => Time.now,
-      :language => languages(:en), :duration => 152, :title => "This Is My Title",
+      :language_id => languages(:en).id, :duration => 152, :title => "This Is My Title",
       :descr => "Here's a description.", :long_descr => "Here's a long description."
     assert_difference Tag, :count do
       v.submitter = users(:quentin)
