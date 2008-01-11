@@ -1,3 +1,27 @@
+# == Schema Information
+# Schema version: 13
+#
+# Table name: users
+#
+#  id                        :integer       not null, primary key
+#  login                     :string(40)    not null
+#  email                     :string(100)   not null
+#  crypted_password          :string(40)    
+#  salt                      :string(40)    
+#  created_at                :datetime      not null
+#  updated_at                :datetime      
+#  remember_token            :string(255)   
+#  remember_token_expires_at :datetime      
+#  city                      :string(64)    
+#  state                     :string(2)     
+#  country                   :string(2)     
+#  is_teacher                :boolean       
+#  descr                     :string(255)   
+#  referral                  :string(255)   
+#  first_name                :string(255)   
+#  last_name                 :string(255)   
+#
+
 quentin:
   id: 1
   first_name: Quentin

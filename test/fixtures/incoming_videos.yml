@@ -1,0 +1,44 @@
+# == Schema Information
+# Schema version: 13
+#
+# Table name: incoming_videos
+#
+#  id           :integer       not null, primary key
+#  title        :string(255)   not null
+#  descr        :string(255)   not null
+#  long_descr   :string(255)   not null
+#  submitter_id :integer       not null
+#  language_id  :integer       not null
+#  size         :integer       not null
+#  state        :integer       default(0)
+#  remote_id    :integer       
+#  created_at   :datetime      
+#  updated_at   :datetime      
+#
+
+one:
+  title: Video One
+  descr: Description one
+  long_descr: Long description one
+  submitter_id: 1
+  language_id: 1
+  size: 82385
+  state: 0
+
+two:
+  title: Video Two
+  descr: Description two
+  long_descr: Long description two
+  submitter_id: 1
+  language_id: 1
+  size: 82385
+  state: 1
+
+three:
+  title: Video Three
+  descr: Description three
+  long_descr: Long description three
+  submitter_id: 1
+  language_id: 1
+  size: 82385
+  state: 2
