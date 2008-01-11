@@ -16,11 +16,17 @@
 #  updated_at   :datetime      
 #
 
+require 'heywatch'
+
 class IncomingVideo < ActiveRecord::Base
 
   IncomingVideo::STATE_NEW = 0
   IncomingVideo::STATE_TRANSFERRED = 1
   IncomingVideo::STATE_ENCODED = 2
+  IncomingVideo::STATE_ERROR = 255
+
+  serialize :meta
+  after_create :convert
 
   belongs_to :submitter, :class_name => "User", :foreign_key => "submitter_id"
   belongs_to :language
@@ -39,6 +45,23 @@ class IncomingVideo < ActiveRecord::Base
     super
     created_at = Time.now
     state = STATE_NEW
+  end
+
+  def url
+    "http://nvbeta.west.spy.net/incoming/#{self.id}"
+  end
+
+  protected
+
+  def convert
+    HeyWatch::Discover.create(
+      :url              => self.url,
+      :download         => true,
+      :nvid             => self.id,
+      :title            => self.title,
+      :automatic_encode => true,
+      :format_id        => 31 # flash
+    )
   end
 
 end
