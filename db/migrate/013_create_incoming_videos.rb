@@ -9,6 +9,7 @@ class CreateIncomingVideos < ActiveRecord::Migration
       t.integer :size, :null => false
       t.integer :state, :default => 0
       t.integer :remote_id
+      t.text :meta
       t.timestamps
     end
   end
