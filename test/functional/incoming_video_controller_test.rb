@@ -28,6 +28,7 @@ class IncomingVideoControllerTest < ActionController::TestCase
 
   def test_upload
     login_as :quentin
+    # HeyWatch::Discover.expects(:create).once
     assert_difference IncomingVideo, 'count' do
       HeyWatch::Discover.expects(:create).once
       post :new, :incoming_video => {
