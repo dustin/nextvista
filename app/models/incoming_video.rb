@@ -26,7 +26,6 @@ class IncomingVideo < ActiveRecord::Base
   IncomingVideo::STATE_ERROR = 255
 
   serialize :meta
-  after_create :convert
 
   belongs_to :submitter, :class_name => "User", :foreign_key => "submitter_id"
   belongs_to :language
@@ -48,20 +47,7 @@ class IncomingVideo < ActiveRecord::Base
   end
 
   def url
-    "http://nvbeta.west.spy.net/incoming/#{self.id}"
-  end
-
-  protected
-
-  def convert
-    HeyWatch::Discover.create(
-      :url              => self.url,
-      :download         => true,
-      :nvid             => self.id,
-      :title            => self.title,
-      :automatic_encode => true,
-      :format_id        => 31 # flash
-    )
+    "http://media.west.spy.net/nextvista/incoming/#{self.id}.bin"
   end
 
 end
