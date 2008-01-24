@@ -17,7 +17,13 @@ class HeywatchController < ApplicationController
     end
     @item.state = IncomingVideo::STATE_ERROR
     logger.error "Error encoding video:  #{@error_msg}"
-    # ItemMailer.deliver_error(error_msg, @item.user)
+    render :nothing => true
+  end
+
+  def download_complete
+    iv = IncomingVideo.find params[:nvid]
+    iv.state = IncomingVideo::STATE_TRANSFERRED
+    iv.save!
     render :nothing => true
   end
 
