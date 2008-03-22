@@ -12,6 +12,13 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 UPLOAD_DIR="#{RAILS_ROOT}/tmp"
 
+DOWNLOAD_COMPLETE_URL = "http://nvbeta.west.spy.net/heywatch/download_complete"
+ENCODED_URL = "http://nvbeta.west.spy.net/heywatch/encoded"
+
+# By default, no beanstalk servers (synchronous processing)
+BEANSTALK_SERVERS=[]
+RELEASE_STAMP = 1
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here
 

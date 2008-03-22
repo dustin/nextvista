@@ -11,6 +11,8 @@ config.logger = SyslogLogger.new
 
 UPLOAD_DIR='/data/web/purple-virts/media/nextvista/incoming'
 
+BEANSTALK_SERVERS %w(purple:11300)
+
 # Full error reports are disabled and caching is turned on
 config.action_controller.consider_all_requests_local = false
 config.action_controller.perform_caching             = true

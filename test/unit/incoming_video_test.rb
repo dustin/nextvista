@@ -17,6 +17,7 @@ class IncomingVideoTest < ActiveSupport::TestCase
   end
 
   def test_create
+    HeyWatch::Discover.expects(:create).once
     iv=IncomingVideo.new :title => 'a title', :descr => 'a descr', :long_descr => 'a long descr',
       :submitter_id => users(:quentin).id, :language_id => languages(:en).id, :size => 82852
     iv.save!

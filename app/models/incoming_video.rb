@@ -16,7 +16,7 @@
 #  updated_at   :datetime      
 #
 
-require 'heywatch'
+require 'video_converter'
 
 class IncomingVideo < ActiveRecord::Base
 
@@ -31,6 +31,10 @@ class IncomingVideo < ActiveRecord::Base
   belongs_to :language
 
   attr_accessible :title, :descr, :long_descr, :submitter_id, :language_id, :size
+
+  async_after_create do |iv|
+    VideoConverter.new.convert iv
+  end
 
   validates_presence_of :title
   validates_presence_of :descr

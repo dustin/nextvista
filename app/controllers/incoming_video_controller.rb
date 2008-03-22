@@ -19,23 +19,7 @@ class IncomingVideoController < ApplicationController
           f.close
         end
       end
-      convert @iv
     end
-  end
-
-  protected
-
-  def convert(iv)
-    HeyWatch::Discover.create(
-      :url              => iv.url,
-      :download         => true,
-      :nvid             => iv.id,
-      :title            => iv.title,
-      :automatic_encode => true,
-      :ping_url_after_transfer => url_for(:controller => 'heywatch', :action => 'download_complete'),
-      :ping_url_after_encode => url_for(:controller => 'heywatch', :action => 'encoded'),
-      :format_id        => 31 # flash
-    )
   end
 
 end
