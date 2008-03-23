@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 13
+# Schema version: 14
 #
 # Table name: incoming_videos
 #
@@ -14,6 +14,7 @@
 #  remote_id    :integer       
 #  created_at   :datetime      
 #  updated_at   :datetime      
+#  filename     :string(255)   
 #
 
 require 'video_converter'
