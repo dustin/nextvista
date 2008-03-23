@@ -1,6 +1,7 @@
 # Settings specified here will take precedence over those in config/environment.rb
 
 require 'syslog_logger'
+require 'heywatch'
 
 # The production environment is meant for finished, "live" apps.
 # Code is not reloaded between requests
@@ -12,6 +13,11 @@ config.logger = SyslogLogger.new
 UPLOAD_DIR='/data/web/purple-virts/media/nextvista/incoming'
 
 BEANSTALK_SERVERS=%w(purple:11300)
+
+unless ENV['HEYWATCH_USER'].blank?
+   HeyWatch::Base::establish_connection! :login => ENV['HEYWATCH_USER'],
+    :password => ENV['HEYWATCH_PASS']
+end
 
 # Full error reports are disabled and caching is turned on
 config.action_controller.consider_all_requests_local = false

@@ -18,3 +18,5 @@ production:
   database: nextvista
   username: nextvista
   password: torso5.doors
+  host: purple
+  port: 5432
