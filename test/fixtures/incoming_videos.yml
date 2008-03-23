@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 14
+# Schema version: 15
 #
 # Table name: incoming_videos
 #
@@ -15,6 +15,7 @@
 #  created_at   :datetime      
 #  updated_at   :datetime      
 #  filename     :string(255)   
+#  meta         :text          
 #
 
 one:
