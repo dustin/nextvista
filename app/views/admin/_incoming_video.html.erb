@@ -1,0 +1,14 @@
+<div class="incoming_video">
+	<h2><%= incoming_video.filename %> by <%= incoming_video.submitter.login %></h2>
+
+	<% unless incoming_video.meta.blank? %>
+		<% vspecs = incoming_video.meta['specs']['video'] %>
+		<dl>
+			<dt>Duration</dt><dd><%= vspecs['length'] %></dd>
+			<dt>Dimensions</dt><dd><%= vspecs['width'] %>x<%= vspecs['height'] %>
+		</dl>
+	<% end %>
+
+	<%= link_to video_thumb(incoming_video), :action => :incoming, :id => incoming_video.id %>
+
+</div>

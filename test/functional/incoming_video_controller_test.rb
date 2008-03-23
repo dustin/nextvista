@@ -34,9 +34,15 @@ class IncomingVideoControllerTest < ActionController::TestCase
           :title => 'a title', :descr => 'a description',
           :long_descr => 'a long description', :language_id => languages(:en)},
         :video_file => fixture_file_upload("incoming_videos.yml")
-      assert_response :success
+      assert_redirected_to :action => :uploaded
       @filename = assigns['filename']
     end
+  end
+
+  def test_uploaded
+    login_as :quentin
+    get :uploaded
+    assert_response :success
   end
 
   # Sure would like to make this work.

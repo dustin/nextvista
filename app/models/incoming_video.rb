@@ -25,6 +25,7 @@ class IncomingVideo < ActiveRecord::Base
   IncomingVideo::STATE_NEW = 0
   IncomingVideo::STATE_TRANSFERRED = 1
   IncomingVideo::STATE_ENCODED = 2
+  IncomingVideo::STATE_COMPLETE = 3
   IncomingVideo::STATE_ERROR = 255
 
   serialize :meta
@@ -55,5 +56,26 @@ class IncomingVideo < ActiveRecord::Base
   def url
     "http://media.west.spy.net/nextvista/incoming/#{self.id}.bin"
   end
+
+  def public_url
+    "http://nvmedia.west.spy.net/flv/#{self.id}/#{self.filename}"
+  end
+
+  def width
+    if self.meta
+      self.meta['specs']['video']['width']
+    else
+      320
+    end
+  end
+
+  def height
+    if self.meta
+      self.meta['specs']['video']['height']
+    else
+      320
+    end
+  end
+
 
 end

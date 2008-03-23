@@ -19,7 +19,12 @@ class IncomingVideoController < ApplicationController
           f.close
         end
       end
+      redirect_to :action => :uploaded
     end
+  end
+
+  def uploaded
+    # render a template
   end
 
 end

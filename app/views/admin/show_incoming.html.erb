@@ -1,0 +1,14 @@
+<h1>Showing Video <%= @video.filename %> from <%= @video.submitter.login %></h1>
+
+<p id="player">
+  You need flash or something.
+</p>
+<script type="text/javascript">
+  var FO = {
+    movie:"http://nvmedia.west.spy.net/flvplayer.swf",
+		width:<%= @video.width %>, height:<%= @video.height %>, majorversion:"7",
+    build:"0",bgcolor:"#FFFFFF",
+    flashvars:"file=<%= @video.public_url %>&showdigits=false&autostart=false&showfsbutton=true&repeat=false"
+  };
+  UFO.create(FO, "player");
+</script>

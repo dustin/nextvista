@@ -13,7 +13,7 @@ class IncomingVideoTest < ActiveSupport::TestCase
   end
 
   def test_search_by_state_encoded
-    assert_equal [incoming_videos(:three)], IncomingVideo.find_all_by_state(IncomingVideo::STATE_ENCODED)    
+    assert_equal [incoming_videos(:three)], IncomingVideo.find_all_by_state(IncomingVideo::STATE_COMPLETE)    
   end
 
   def test_create

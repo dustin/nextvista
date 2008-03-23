@@ -56,6 +56,7 @@ class VideoConverter
 
     iv.filename = filename
     iv.meta = hv.attributes
+    iv.state = IncomingVideo::STATE_COMPLETE
     iv.save!
 
     RAILS_DEFAULT_LOGGER.info "...and this video is ready for action."

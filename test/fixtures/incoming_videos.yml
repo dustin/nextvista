@@ -43,4 +43,5 @@ three:
   submitter_id: 1
   language_id: 1
   size: 82385
-  state: 2
+  state: 3
+  filename: file.flv

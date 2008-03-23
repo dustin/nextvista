@@ -18,6 +18,17 @@ class AdminController < ApplicationController
     @comments=Comment.find :all, :limit => 50, :order => "created_at desc"
   end
 
+  def incoming
+    if params[:id]
+      @video = IncomingVideo.find params[:id]
+      render :action => :show_incoming
+    else
+      @incoming = IncomingVideo.find :all,
+        :conditions => { :state => IncomingVideo::STATE_COMPLETE },
+        :order => :created_at
+    end
+  end
+
   protected
 
   def authorized?
