@@ -23,11 +23,7 @@ class VideoConverter
     RAILS_DEFAULT_LOGGER.info "Fetching a completed video."
     localfile="/tmp/#{iv.id}.flv"
     unless File.exist? localfile
-      # Their HTTP crap sucks.  Nobody should have to do this.
-      creds = Base64.encode64 "#{ENV['HEYWATCH_USER']}:#{ENV['HEYWATCH_PASS']}"
-      system('wget', "--header=Authorization: Basic #{creds.strip}",
-        "-q", "-O", localfile, url)
-      raise "wget failed" unless $?.success?
+      download url, localfile, true
     end
 
     RAILS_DEFAULT_LOGGER.info "Fetched the video.  Uploading to S3"
@@ -39,11 +35,27 @@ class VideoConverter
       :access => :public_read,
       :content_type => 'video/x-flv'
     )
+    # We don't need you, anymore
+    File::unlink localfile
 
-    RAILS_DEFAULT_LOGGER.info "Uploaded, updating the filename."
+    RAILS_DEFAULT_LOGGER.info "Uploaded, grabbing the thumbnail."
+    hv = HeyWatch::Video.find(iv.remote_id)
+
+    thumbfile = "/tmp/thumb.#{iv.id}.jpg"
+    download hv.specs.thumb, thumbfile
+    AWS::S3::S3Object.store(
+      "thumb/#{iv.id}.jpg",
+      open(thumbfile),
+      S3_BUCKET,
+      :access => :public_read,
+      :content_type => 'image/jpg'
+    )
+    File::unlink thumbfile
+
+    RAILS_DEFAULT_LOGGER.info "Thumbnail captured, we're almost home."
 
     iv.filename = filename
-    iv.meta = HeyWatch::Video.find(iv.remote_id).attributes
+    iv.meta = hv.attributes
     iv.save!
 
     RAILS_DEFAULT_LOGGER.info "...and this video is ready for action."
@@ -53,6 +65,20 @@ class VideoConverter
   # Async observer repr
   def rrepr
     return "VideoConverter.new"
+  end
+
+  private
+
+  def self.download(url, localfile, auth=false)
+    args=['wget']
+    if auth
+      # Their HTTP crap sucks.  Nobody should have to do this.
+      creds = Base64.encode64 "#{ENV['HEYWATCH_USER']}:#{ENV['HEYWATCH_PASS']}"
+      args << "--header=Authorization: Basic #{creds.strip}"
+    end
+    args += ["-q", "-O", localfile, url]
+    system(*args)
+    raise "wget failed" unless $?.success?
   end
 
 end
