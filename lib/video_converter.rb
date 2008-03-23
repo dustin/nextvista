@@ -43,6 +43,7 @@ class VideoConverter
     RAILS_DEFAULT_LOGGER.info "Uploaded, updating the filename."
 
     iv.filename = filename
+    iv.meta = HeyWatch::Video.find(iv.remote_id).attributes
     iv.save!
 
     RAILS_DEFAULT_LOGGER.info "...and this video is ready for action."
