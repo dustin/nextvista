@@ -21,12 +21,32 @@ class VideoConverter
   # Fetch a video from a URL for an incoming video to produce a variant.
   def self.fetch(iv, filename, url)
     RAILS_DEFAULT_LOGGER.info "Fetching a completed video."
-    # Their HTTP crap sucks.  Nobody should have to do this.
-    creds = Base64.encode64 "#{ENV['HEYWATCH_USER']}:#{ENV['HEYWATCH_PASS']}"
-    system('wget', "--header=Authorization: Basic #{creds.strip}",
-      "-q", "-O", "/tmp/#{iv.id}.flv", url)
-    raise "wget failed" unless $?.success?
-    RAILS_DEFAULT_LOGGER.info "Fetched the video.  Must do something!"
+    localfile="/tmp/#{iv.id}.flv"
+    unless File.exist? localfile
+      # Their HTTP crap sucks.  Nobody should have to do this.
+      creds = Base64.encode64 "#{ENV['HEYWATCH_USER']}:#{ENV['HEYWATCH_PASS']}"
+      system('wget', "--header=Authorization: Basic #{creds.strip}",
+        "-q", "-O", localfile, url)
+      raise "wget failed" unless $?.success?
+    end
+
+    RAILS_DEFAULT_LOGGER.info "Fetched the video.  Uploading to S3"
+
+    AWS::S3::S3Object.store(
+      "flv/#{iv.id}/#{filename}",
+      open(localfile),
+      S3_BUCKET,
+      :access => :public_read,
+      :content_type => 'video/x-flv'
+    )
+
+    RAILS_DEFAULT_LOGGER.info "Uploaded, updating the filename."
+
+    iv.filename = filename
+    iv.save!
+
+    RAILS_DEFAULT_LOGGER.info "...and this video is ready for action."
+
   end
 
   # Async observer repr
