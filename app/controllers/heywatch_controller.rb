@@ -3,10 +3,9 @@ class HeywatchController < ApplicationController
   before_filter :find_item
 
   def encoded
-    @item.remote_id = params[:encoded_video_id]
     @item.state = IncomingVideo::STATE_ENCODED
     @item.save
-    VideoConverter.new.async_send :fetch, @item, params[:filename], params[:link]
+    VideoConverter.async_send :fetch, @item, params[:filename], params[:link]
     render :nothing => true
   end
 

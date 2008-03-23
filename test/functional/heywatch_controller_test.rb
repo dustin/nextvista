@@ -1,14 +1,23 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
+require 'video_converter'
+
 class HeywatchControllerTest < ActionController::TestCase
 
   fixtures :incoming_videos
 
   def test_encoded
-    post :encoded, :nvid => incoming_videos(:one).id, :encoded_video_id => 88452
+    remid=6926
+    iv=incoming_videos(:one)
+    iv.remote_id = remid
+    iv.save!
+    VideoConverter.expects(:fetch).with(iv,
+      'Blah.flv', 'http://www.spy.net/blah.bin').once
+    post :encoded, :job_id => 2375, :video_id => remid,
+      :encoded_video_id => 88452, :filename => 'Blah.flv',
+      :link => 'http://www.spy.net/blah.bin'
     assert_response :success
     v=IncomingVideo.find incoming_videos(:one).id
-    assert_equal 88452, v.remote_id
     assert_equal IncomingVideo::STATE_ENCODED, v.state
   end
 

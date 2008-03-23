@@ -33,7 +33,7 @@ class IncomingVideo < ActiveRecord::Base
   attr_accessible :title, :descr, :long_descr, :submitter_id, :language_id, :size
 
   async_after_create do |iv|
-    VideoConverter.new.convert iv
+    VideoConverter.convert iv
   end
 
   validates_presence_of :title

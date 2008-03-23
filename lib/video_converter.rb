@@ -3,9 +3,7 @@ require 'net/http'
 
 class VideoConverter
 
-  include AsyncObserver::Extensions
-
-  def convert(iv)
+  def self.convert(iv)
     RAILS_DEFAULT_LOGGER.info "Processing a newly uploaded video"
     rv=HeyWatch::Discover.create(
       :url              => iv.url,
@@ -21,10 +19,10 @@ class VideoConverter
   end
 
   # Fetch a video from a URL for an incoming video to produce a variant.
-  def fetch(iv, filename, url)
+  def self.fetch(iv, filename, url)
     RAILS_DEFAULT_LOGGER.info "Fetching a completed video."
     File.open "/tmp/#{filename}", 'wb' do |f|
-      http.get url do |chunk|
+      Net::HTTP.get URI.parse(url) do |chunk|
         f.write chunk
       end
     end
