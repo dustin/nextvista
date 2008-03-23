@@ -6,6 +6,7 @@ class HeywatchController < ApplicationController
     @item.remote_id = params[:encoded_video_id]
     @item.state = IncomingVideo::STATE_ENCODED
     @item.save
+    VideoConverter.new.fetch @item, params[:filename], params[:link]
     render :nothing => true
   end
 
@@ -23,6 +24,7 @@ class HeywatchController < ApplicationController
   def download_complete
     iv = IncomingVideo.find params[:nvid]
     iv.state = IncomingVideo::STATE_TRANSFERRED
+    iv.remote_id = params[:video_id]
     iv.save!
     render :nothing => true
   end
@@ -30,6 +32,10 @@ class HeywatchController < ApplicationController
   protected
 
   def find_item
-    @item = IncomingVideo.find params[:nvid]
+    if params[:nvid]
+      @item = IncomingVideo.find params[:nvid]
+    elsif params[:video_id]
+      @item = IncomingVideo.find_by_remote_id params[:video_id]
+    end
   end
 end
