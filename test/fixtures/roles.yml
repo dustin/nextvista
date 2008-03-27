@@ -9,11 +9,8 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 one:
-  id: 1
   name: role1
 two:
-  id: 2
   name: role2
 admin:
-  id: 3
   name: admin

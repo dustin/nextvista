@@ -15,20 +15,18 @@
 #
 
 one:
-  id: 1
-  submitter_id: 1
+  submitter: quentin
   submit_date: 2007-12-29 18:56:13
-  language_id: 1
+  language: en
   duration: 395
   title: Something Cool
   url_slug: something-cool
   descr: Here's a video about stuff.
   long_descr: Here's a long description about stuff.
 two:
-  id: 2
-  submitter_id: 1
+  submitter: quentin
   submit_date: 2007-12-29 18:57:27
-  language_id: 1
+  language: en
   duration: 194
   title: Something Less Cool
   url_slug: something-less-cool

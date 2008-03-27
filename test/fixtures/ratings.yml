@@ -11,12 +11,10 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 one:
-  id: 1
-  user_id: 1
-  video_id: 1
+  user: quentin
+  video: one
   value: 3
 two:
-  id: 2
-  user_id: 2
-  video_id: 1
+  user: aaron
+  video: one
   value: 4

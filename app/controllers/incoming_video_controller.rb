@@ -9,7 +9,7 @@ class IncomingVideoController < ApplicationController
       IncomingVideo.transaction do
         @iv.submitter = current_user
         @iv.size = params[:video_file].length
-        @iv.save
+        @iv.save!
 
         @filename = "#{UPLOAD_DIR}/#{@iv.id}.bin"
         f = File.new(@filename, "wb")

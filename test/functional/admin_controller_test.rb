@@ -16,7 +16,7 @@ class AdminControllerTest < Test::Unit::TestCase
 
   include AuthenticatedTestHelper
 
-  fixtures :users, :videos, :comments
+  fixtures :all
 
   def setup
     @controller = AdminController.new
@@ -59,7 +59,7 @@ class AdminControllerTest < Test::Unit::TestCase
   def test_recent_comments
     login_as :quentin
     get :recent_comments
-    assert_equal [3, 2, 1], assigns['comments'].map(&:id)
+    assert_equal comments(:deleted, :two, :one), assigns(:comments)
   end
 
   def test_incoming

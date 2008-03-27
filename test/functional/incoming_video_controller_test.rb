@@ -4,7 +4,7 @@ class IncomingVideoControllerTest < ActionController::TestCase
 
   include AuthenticatedTestHelper
 
-  fixtures :incoming_videos, :users, :languages
+  fixtures :all
 
   def teardown
     if defined? @filename
@@ -32,7 +32,7 @@ class IncomingVideoControllerTest < ActionController::TestCase
       HeyWatch::Discover.expects(:create).once
       post :new, :incoming_video => {
           :title => 'a title', :descr => 'a description',
-          :long_descr => 'a long description', :language_id => languages(:en)},
+          :long_descr => 'a long description', :language_id => languages(:en).id},
         :video_file => fixture_file_upload("incoming_videos.yml")
       assert_redirected_to :action => :uploaded
       @filename = assigns['filename']

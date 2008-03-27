@@ -22,8 +22,8 @@ one:
   title: Video One
   descr: Description one
   long_descr: Long description one
-  submitter_id: 1
-  language_id: 1
+  submitter: quentin
+  language: en
   size: 82385
   state: 0
 
@@ -31,8 +31,8 @@ two:
   title: Video Two
   descr: Description two
   long_descr: Long description two
-  submitter_id: 1
-  language_id: 1
+  submitter: quentin
+  language: en
   size: 82385
   state: 1
 
@@ -40,8 +40,8 @@ three:
   title: Video Three
   descr: Description three
   long_descr: Long description three
-  submitter_id: 1
-  language_id: 1
+  submitter: quentin
+  language: en
   size: 82385
   state: 3
   filename: file.flv

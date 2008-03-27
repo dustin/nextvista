@@ -1,18 +1,15 @@
 vtag1:
-  id: 1
-  tag_id: 1
-  taggable_id: 1
+  tag: one
+  taggable_id: <%= Fixtures.identify(:one) %>
   taggable_type: Video
   created_at: 2006-08-01
 vtag2:
-  id: 2
-  tag_id: 2
-  taggable_id: 1
+  tag: two
+  taggable_id: <%= Fixtures.identify(:one) %>
   taggable_type: Video
   created_at: 2006-08-01
 vtag3:
-  id: 3
-  tag_id: 1
-  taggable_id: 2
+  tag: one
+  taggable_id: <%= Fixtures.identify(:two) %>
   taggable_type: Video
   created_at: 2006-08-01

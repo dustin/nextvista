@@ -16,7 +16,7 @@ class VideoControllerTest < Test::Unit::TestCase
 
   def test_index
     get :index
-    assert_equal [1, 2], assigns['videos'].map(&:id).sort
+    assert_equal videos(:one, :two).map(&:id).sort, assigns(:videos).map(&:id).sort
   end
 
   def test_by_slug

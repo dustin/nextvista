@@ -13,16 +13,14 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 one:
-  id: 1
-  video_id: 1
-  format_id: 1
+  video: one
+  format: mp4
   width: 640
   height: 480
   size: 1929862
 two:
-  id: 2
-  video_id: 1
-  format_id: 2
+  video: one
+  format: mov
   width: 320
   height: 200
   size: 82753

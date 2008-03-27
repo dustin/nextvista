@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CommentTest < Test::Unit::TestCase
-  fixtures :comments, :videos, :users
+  fixtures :all
 
   def test_comments_for_video
     assert_equal 2, videos(:one).comments.size
@@ -17,14 +17,14 @@ class CommentTest < Test::Unit::TestCase
     c.ip_address = '127.0.0.1'
     c.video = videos(:one)
     c.save!
-    assert_equal 3, Video.find(1).comments.length
+    assert_equal 3, videos(:one).reload.comments.length
   end
 
   def test_comment_logical_delete
-    c=Comment.find 1
+    c=comments(:one)
     c.deleted=true
     c.save!
-    assert_equal 1, Video.find(1).comments.size
+    assert_equal 1, videos(:one).comments.size
   end
 
   def test_comments_from_user_aaron

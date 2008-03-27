@@ -9,8 +9,6 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 en:
-  id: 1
   code: en
 jp:
-  id: 2
   code: jp

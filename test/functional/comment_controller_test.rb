@@ -34,7 +34,7 @@ class CommentControllerTest < Test::Unit::TestCase
     assert_difference Comment, :count do
       post :create, :comment => {:video_id => videos(:one).id, :comment => "Hi", :user_id => 2}
     end
-    assert_equal 1, assigns['comment'].user_id
+    assert_equal users(:quentin).id, assigns(:comment).user_id
   end
 
   def test_new_comment_fake_ip

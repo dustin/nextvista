@@ -10,14 +10,11 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 mp4:
-  id: 1
   name: mp4
   mime_type: video/mp4
 mov:
-  id: 2
   name: Quicktime
   mime_type: video/quicktime
 flv:
-  id: 3
   name: Flash Video
   mime_type: video/x-flv
