@@ -9,6 +9,13 @@ set :deploy_to, "/data/web/rails/#{application}"
 
 set :scm, :mercurial
 
+depend :remote, :command, "hg"
+depend :remote, :gem, "SyslogLogger", ">= 1.4"
+depend :remote, :gem, "memcache-client", ">= 1.5"
+depend :remote, :gem, "postgres-pr", ">= 0.4.0"
+depend :remote, :gem, "dustin-beanstalk-client", ">= 0.11.1"
+depend :remote, :gem, "god", ">= 0.7"
+
 role :app, "basket.west.spy.net"
 role :web, "basket.west.spy.net"
 role :db,  "basket.west.spy.net", :primary => true
