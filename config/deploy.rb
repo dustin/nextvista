@@ -1,5 +1,5 @@
 set :application, "nextvista"
-set :repository,  "http://hg.west.spy.net/hg/web/#{application}/"
+set :repository,  "git://github.com/dustin/#{application}.git"
 set :runner, 'www'
 
 # If you aren't deploying to /u/apps/#{application} on the target
@@ -7,9 +7,11 @@ set :runner, 'www'
 # via the :deploy_to variable:
 set :deploy_to, "/data/web/rails/#{application}"
 
-set :scm, :mercurial
+set :scm, :git
+set :branch, 'origin/master'
+set :deploy_via, :remote_cache
 
-depend :remote, :command, "hg"
+depend :remote, :command, "git"
 depend :remote, :gem, "SyslogLogger", ">= 1.4"
 depend :remote, :gem, "memcache-client", ">= 1.5"
 depend :remote, :gem, "postgres-pr", ">= 0.4.0"
