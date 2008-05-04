@@ -14,7 +14,7 @@ set :deploy_via, :remote_cache
 depend :remote, :command, "git"
 depend :remote, :gem, "SyslogLogger", ">= 1.4"
 depend :remote, :gem, "memcache-client", ">= 1.5"
-depend :remote, :gem, "postgres-pr", ">= 0.4.0"
+depend :remote, :gem, "postgres", ">= 0.7.9"
 depend :remote, :gem, "dustin-beanstalk-client", ">= 0.11.1"
 depend :remote, :gem, "god", ">= 0.7"
 
