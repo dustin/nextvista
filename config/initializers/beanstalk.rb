@@ -1,5 +1,5 @@
 unless BEANSTALK_SERVERS.blank?
-  AsyncObserver::Queue.queue = Beanstalk::Pool.new BEANSTALK_SERVERS
+  AsyncObserver::Queue.queue = Beanstalk::Pool.new BEANSTALK_SERVERS, 'nv'
 end
 
 # This value should change every time you make a release of your app.
