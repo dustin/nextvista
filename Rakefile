@@ -9,9 +9,7 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
-task :mkdirs do |t|
-	mkdir 'log'
-	mkdir 'tmp'
-end
+directory "log"
+directory "tmp"
 
-task :cruise => [:mkdirs, :test]
+task :cruise => [:log, :tmp, :test]
