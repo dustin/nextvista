@@ -8,3 +8,10 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+
+task :mkdirs do |t|
+	mkdir 'log'
+	mkdir 'tmp'
+end
+
+task :cruise => [:mkdirs, :test]
