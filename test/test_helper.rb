@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 
 begin
-  require 'redgreen'
+  require 'redgreen' unless ENV['CC_BUILD_REVISION']
 rescue LoadError
   puts "The redgreen gem makes your tests prettier."
 end
